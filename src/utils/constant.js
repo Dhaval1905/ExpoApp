@@ -1,5 +1,7 @@
-import SimpleToast from 'react-native-simple-toast';
+// import SimpleToast from 'react-native-simple-toast';
+import Toast, { DURATION } from 'react-native-easy-toast'
 
+import { Snackbar } from 'react-native-paper';
 
 export const BASE_URL = 'https://dev.rethinkfi.com/api/'
 export const APP_TOKEN = 'd52970d4-702e-4e95-96aa-b6e2edaaabf0'
@@ -25,5 +27,9 @@ export const IS_DASHBOARD = 'IS_DASHBOARD'
 
 export const showToast = val => {
   // show.show(val, Toast.LONG);
-  SimpleToast.show(val, SimpleToast.LONG)
+  // SimpleToast.show(val, SimpleToast.LONG)
+  this.toast.show(val, 3000, () => {
+    // something you want to do at close
+  });
+  // alert("Hey")
 };

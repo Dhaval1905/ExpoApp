@@ -23,8 +23,8 @@ const styling = theme =>
       fontSize: 26,
       fontWeight: 'bold',
       marginTop: 15,
-      color:'#282828',
-      alignSelf:'center'
+      color: '#282828',
+      alignSelf: 'center'
     },
     secondText: {
       marginTop: 10,

@@ -15,21 +15,21 @@ import { Loader } from './components';
 
 
 const App = () => {
-  const apptheme = useColorScheme();
-  const styles = styling(apptheme);
+  // const apptheme = useColorScheme();
+  // const styles = styling(apptheme);
+  console.log("#######")
   return (
     <SafeAreaView style={styles.screen}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        {/* apptheme === 'dark' ? DarkTheme :  */}
-        <PaperProvider theme={DefaultTheme}>
-          <FlashMessage position={'top'} floating={true} duration={4000} />
-          <MainStack />
-          <Loader theme={apptheme} />
-        </PaperProvider>
-      </PersistGate>
-    </Provider>
-     </SafeAreaView>
+      {/* <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <PaperProvider theme={DefaultTheme}>
+            <FlashMessage position={'top'} floating={true} duration={4000} />
+            <MainStack />
+            <Loader theme={apptheme} />
+          </PaperProvider>
+        </PersistGate>
+      </Provider> */}
+    </SafeAreaView>
   );
 };
 
