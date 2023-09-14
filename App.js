@@ -22,7 +22,7 @@ import {
   Poppins_300Light
 } from "@expo-google-fonts/poppins";
 import AppLoading from 'expo-app-loading';
-import Toast, { DURATION } from 'react-native-easy-toast'
+// import Toast, { DURATION } from 'react-native-easy-toast'
 
 SplashScreen.preventAutoHideAsync();
 
@@ -97,7 +97,7 @@ const App = () => {
       <Provider store={store} >
         <PersistGate loading={null} persistor={persistor}>
           <PaperProvider theme={DefaultTheme}>
-            <Toast ref={(toast) => this.toast = toast} />
+            {/* <Toast ref={(toast) => this.toast = toast} /> */}
             <FlashMessage position={'top'} floating={true} duration={4000} />
             <MainStack />
             <Loader theme={apptheme} />
