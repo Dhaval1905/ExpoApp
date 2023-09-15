@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Fonts } from '../../assets';
 import {
   Colors,
@@ -17,19 +17,19 @@ const styling = theme => {
     titleParent: {
       // flex: 0.2,
       justifyContent: 'flex-end',
-      marginTop:horizontalScale(50)
+      marginTop: horizontalScale(50)
     },
     title: {
       fontSize: moderateScale(24),
       color: Colors[theme].black,
       fontFamily: Fonts.regular,
-      width:'80%'
+      width: '80%'
     },
     subTitleParent: {
       // flex: 0.15,
-      marginTop:horizontalScale(14),
+      marginTop: horizontalScale(14),
       justifyContent: 'center',
-      width:'80%'
+      width: '80%'
     },
     subTitle: {
       fontSize: moderateScale(16),
@@ -39,12 +39,12 @@ const styling = theme => {
     applyButtonParent: {
       // flex: 0.1,
       justifyContent: 'space-around',
-      marginVertical:horizontalScale(20)
+      marginVertical: horizontalScale(20)
     },
     applyBtn: {
       backgroundColor: Colors[theme].blue,
       width: '100%',
-      height: verticalScale(50),
+      height: Platform.OS === "web" ? verticalScale(100) : verticalScale(50),
       borderRadius: moderateScale(30),
     },
     applyText: {
@@ -82,12 +82,12 @@ const styling = theme => {
     },
     alreadyAccountBtn: {
       width: '100%',
-      height: verticalScale(50),
+      height: Platform.OS === "web" ? verticalScale(100) : verticalScale(50),
       borderRadius: moderateScale(30),
       backgroundColor: Colors[theme].white,
       borderColor: Colors[theme].black,
       borderWidth: horizontalScale(1),
-      marginVertical:horizontalScale(20)
+      marginVertical: horizontalScale(20)
     },
     alreadyAccountText: {
       color: Colors[theme].black,
@@ -95,7 +95,7 @@ const styling = theme => {
       fontFamily: Fonts.medium,
     },
     introNoteParent: {
-      flex: 0.32,
+      flex: Platform.OS === "web" ? -10 : 0.32,
       justifyContent: 'flex-end',
     },
     introNote: {
@@ -103,7 +103,7 @@ const styling = theme => {
       fontSize: moderateScale(13),
       textAlign: 'center',
       fontFamily: Fonts.regular,
-      fontWeight:'400'
+      fontWeight: '400'
     },
   });
 };

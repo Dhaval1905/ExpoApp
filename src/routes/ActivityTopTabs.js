@@ -4,7 +4,10 @@ import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { CustomHeader } from '../components';
 import { navigationStrings } from '../constants';
-import { FinancialInsights, Transactions, Transactions1 } from '../modules';
+// import { FinancialInsights, Transactions, Transactions1 } from '../modules';
+import { FinancialInsights } from "../modules/FinancialInsights"
+import { Transactions } from "../modules/Transactions"
+import { Transactions1 } from "../modules/Transactions1"
 import { Colors, horizontalScale, styling } from '../theme';
 import { useDispatch } from 'react-redux';
 import { changeDashboard } from '../redux/actions/initial';

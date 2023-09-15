@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as License } from \"./License\";","map":{"version":3,"names":["default","License"],"sources":["/Users/dhavalpatel/Documents/ExpoApp/src/modules/License/index.js"],"sourcesContent":["export {default as License} from './License';\n"],"mappings":"AAAA,SAAQA,OAAO,IAAIC,OAAO"},"metadata":{},"sourceType":"module","externalDependencies":[]}

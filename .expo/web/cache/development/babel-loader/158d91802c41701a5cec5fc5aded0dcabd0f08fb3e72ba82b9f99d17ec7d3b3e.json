@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as Users } from \"./UsersScreen\";","map":{"version":3,"names":["default","Users"],"sources":["/Users/dhavalpatel/Documents/ExpoApp/src/modules/Users/index.js"],"sourcesContent":["export {default as Users} from './UsersScreen';\n"],"mappings":"AAAA,SAAQA,OAAO,IAAIC,KAAK"},"metadata":{},"sourceType":"module","externalDependencies":[]}

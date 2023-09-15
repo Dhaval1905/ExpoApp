@@ -69,12 +69,12 @@ import { SplashScreen } from "../modules/SplashScreen"
 // import WireTranferScreen from '../modules/AddPayee/WireTranferScreen/WireTranferScreen';
 // import OTPVerify from '../modules/OTPVerify';
 import AuthStack from './AuthStack';
-// import BottomTabsNav from './BottomTabsNav';
+import BottomTabsNav from './BottomTabsNav';
 // import BankLetterDetails from '../modules/BankLetterDetails/BankLetterDetails';
 import { _navigator, isReadyRef } from '../constants/NavigationService';
 // import { TestLink } from '../modules/TestLinkScreen';
 // import WebviewScreen from '../components/Webview/Webview';
-// import OTPVerifyLogin from '../modules/OTPVerifyLogin';
+import OTPVerifyLogin from '../modules/OTPVerifyLogin';
 
 const Stack = createNativeStackNavigator();
 
@@ -102,11 +102,16 @@ const MainStack = () => {
           component={AuthStack}
           initialParams={{ theme: apptheme }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name={navigationStrings.BOTTOMTABSNAV}
           component={BottomTabsNav}
           initialParams={{ theme: apptheme }}
-        /> */}
+        />
+        <Stack.Screen
+          name={navigationStrings.OTPVERIFYLOGIN}
+          component={OTPVerifyLogin}
+          initialParams={{ theme: apptheme }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

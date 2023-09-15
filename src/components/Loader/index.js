@@ -3,7 +3,7 @@ import React from 'react'
 import { ActivityIndicator } from 'react-native-paper'
 import { useSelector } from 'react-redux';
 import { Colors, horizontalScale, moderateScale } from '../../theme'
-import { Image, Text, View } from 'react-native'
+import { Image, Platform, Text, View } from 'react-native'
 import { Fonts, Icons } from '../../assets';
 
 export const Loader = ({ theme }) => {
@@ -20,8 +20,8 @@ export const Loader = ({ theme }) => {
                     backgroundColor: 'rgba(0, 0, 0, 0.6)'
                 }}>
                     <View style={{
-                        height: 150,
-                        width: '85%',
+                        height: Platform.OS === 'web' ? 300 : 150,
+                        width: '50%',
                         backgroundColor: '#FFFFFF',
                         alignSelf: 'center',
                         borderRadius: horizontalScale(24),
@@ -34,7 +34,7 @@ export const Loader = ({ theme }) => {
                             tintColor:Colors[theme].blue
                         }} /> */}
                         <Image source={require("../../assets/images/please_wait.gif")} style={{
-                            height: moderateScale(70),
+                            height: Platform.OS === "web" ? moderateScale(60) : moderateScale(70),
                             width: moderateScale(70),
                             // backgroundColor: Colors[theme].blue,
                         }} />

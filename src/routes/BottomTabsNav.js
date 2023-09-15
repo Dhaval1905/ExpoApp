@@ -1,6 +1,7 @@
+import React from 'react';
+import { Image, View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useRoute } from '@react-navigation/native';
-import React from 'react';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { navigationStrings } from '../constants';
@@ -11,7 +12,6 @@ import { MoveMoney } from "../modules/MoveMoney"
 import { Settings } from "../modules/Settings"
 import { Colors } from '../theme';
 import ActivityTopTabs from './ActivityTopTabs';
-import { Image } from 'react-native';
 import { Fonts, Icons } from '../assets';
 
 const Tab = createBottomTabNavigator();

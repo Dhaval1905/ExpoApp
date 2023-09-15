@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Fonts } from '../../assets';
 import {
   Colors,
@@ -20,7 +20,7 @@ const styling = theme =>
     },
     applogoParent: {
       // flex: 0.3,
-      marginVertical:horizontalScale(30)
+      marginVertical: horizontalScale(30)
       // justifyContent: 'center',
       // alignItems: 'center',
     },
@@ -34,7 +34,7 @@ const styling = theme =>
     },
     loginBtn: {
       width: '100%',
-      height: verticalScale(50),
+      height: Platform.OS === "web" ? verticalScale(100) : verticalScale(50),
       backgroundColor: Colors[theme].blue,
       borderRadius: moderateScale(30),
       marginTop: verticalScale(30),
@@ -47,7 +47,7 @@ const styling = theme =>
       color: Colors[theme].black,
       fontSize: moderateScale(16),
       alignSelf: 'center',
-      marginTop: verticalScale(18),
+      marginTop: Platform.OS === 'web' ? verticalScale(30) : verticalScale(18),
       fontFamily: Fonts.medium,
     },
     errorText: {
@@ -73,12 +73,12 @@ const styling = theme =>
       fontSize: moderateScale(16),
       marginLeft: horizontalScale(4),
     },
-    loginStyle:{
-      fontFamily:Fonts.medium,
-      fontWeight:'600',
-      fontSize:horizontalScale(25),
-      color:Colors[theme].black,
-      marginTop:5
+    loginStyle: {
+      fontFamily: Fonts.medium,
+      fontWeight: '600',
+      fontSize: horizontalScale(25),
+      color: Colors[theme].black,
+      marginTop: 5
     },
   });
 
