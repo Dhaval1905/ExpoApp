@@ -2,12 +2,13 @@ import React from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {Colors, horizontalScale, moderateScale} from '../../theme';
+import { Colors, horizontalScale, moderateScale } from '../../theme';
 import styling from './DashboardCardStyle';
 
 const DashboardCard = ({
@@ -28,41 +29,41 @@ const DashboardCard = ({
   const styles = styling(theme);
 
   return (
-    <TouchableOpacity style={[styles.card, cardStyle, backgroundImage && {paddingLeft: 0}]} onPress={onPressNavigationButton}>
+    <TouchableOpacity style={[styles.card, cardStyle, backgroundImage && { paddingLeft: 0 }]} onPress={onPressNavigationButton}>
       <ImageBackground
         source={backgroundImage}
         style={[
           styles.backgroundImage,
           backgroundImage && {},
         ]}>
-          <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'space-between'}} >
-            <View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-        <View style={styles.cardLogoParent}>
-          <Image source={logo} style={[styles.cardLogo, logoStyle]} />
-        </View>
-        <View style={{marginLeft:horizontalScale(25)}}>
-            <Text style={[styles.cardTitle, titleStyle]}>{title}</Text>
-            <Text style={[styles.cardSubTitle, subTitleStyle]}>{subTitle}</Text>
+        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }} >
+          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+            <View style={styles.cardLogoParent}>
+              <Image source={logo} style={[styles.cardLogo, logoStyle]} />
             </View>
+            <View style={{ marginLeft: Platform.OS === "web" ? 15 : horizontalScale(25) }}>
+              <Text style={[styles.cardTitle, titleStyle]}>{title}</Text>
+              <Text style={[styles.cardSubTitle, subTitleStyle]}>{subTitle}</Text>
             </View>
-        <View style={styles.cardDetailParent}>
-          <View style={styles.navigateTextParent}>
-            <View
-              style={styles.navigateButton}
+          </View>
+          <View style={styles.cardDetailParent}>
+            <View style={styles.navigateTextParent}>
+              <View
+                style={styles.navigateButton}
               >
-              <Icon
-                name={'chevron-right'}
-                size={moderateScale(20)}
-                color={
-                  navigationLogoColor
-                    ? navigationLogoColor
-                    : Colors[theme].black
-                }
-              />
+                <Icon
+                  name={'chevron-right'}
+                  size={Platform.OS == "web" ? 20 : moderateScale(20)}
+                  color={
+                    navigationLogoColor
+                      ? navigationLogoColor
+                      : Colors[theme].black
+                  }
+                />
+              </View>
             </View>
           </View>
         </View>
-          </View>
       </ImageBackground>
     </TouchableOpacity>
   );

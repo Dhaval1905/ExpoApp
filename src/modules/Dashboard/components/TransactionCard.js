@@ -80,7 +80,7 @@ const TransactionCard = ({ title, noTrasaction, transactionData, theme }) => {
             {dashBoardData?.last_5_transactions_filtered && dashBoardData?.last_5_transactions_filtered.length > 0 && dashBoardData?.last_5_transactions_filtered.map((item, index) => {
               return (
                 <>
-                  <TouchableOpacity style={{ width: '100%', backgroundColor: 'white', borderRadius: 8, padding: horizontalScale(10), flexDirection: 'row', marginTop: 12, justifyContent: 'space-between', alignItems: 'center' }} onPress={() => navigation.navigate(navigationStrings.TransacationDeatils, { item })}>
+                  <TouchableOpacity style={{ width: '100%', backgroundColor: 'white', borderRadius: 8, padding: Platform.OS === "web" ? 8 : horizontalScale(10), flexDirection: 'row', marginTop: Platform.OS === "web" ? 8 : 12, justifyContent: 'space-between', alignItems: 'center' }} onPress={() => navigation.navigate(navigationStrings.TransacationDeatils, { item })}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <View style={{ height: verticalScale(58), width: verticalScale(58), backgroundColor: getColor(item), borderRadius: verticalScale(80), justifyContent: 'center', alignItems: 'center' }} >
                         <Image source={getImage(item)} resizeMode='contain' style={{

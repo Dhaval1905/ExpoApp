@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../assets';
 import {
   Colors,
   horizontalScale,
@@ -11,13 +11,13 @@ const styling = theme =>
   StyleSheet.create({
     card: {
       flexDirection: 'row',
-      height: verticalScale(100),
+      height: Platform.OS === "web" ? 70 : verticalScale(100),
       backgroundColor: Colors[theme].white,
-      borderRadius: moderateScale(24),
-      padding: horizontalScale(12),
+      borderRadius: Platform.OS === "web" ? 12 : moderateScale(24),
+      padding: Platform.OS === "web" ? 12 : horizontalScale(12),
       overflow: 'hidden',
       marginVertical: verticalScale(10),
-      elevation:4
+      elevation: 4
     },
     backgroundImage: {
       flex: 1,
@@ -32,15 +32,15 @@ const styling = theme =>
       // justifyContent: 'center',
     },
     cardLogo: {
-      height: moderateScale(35),
-      width: moderateScale(35),
+      height: Platform.OS === "web" ? 30 : moderateScale(35),
+      width: Platform.OS === "web" ? 30 : moderateScale(35),
     },
     cardTitleParent: {
       flex: 0.3,
       justifyContent: 'flex-end',
     },
     cardTitle: {
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(18),
       color: Colors[theme].black,
       fontFamily: Fonts.bold,
     },
@@ -48,7 +48,7 @@ const styling = theme =>
       flex: 0.45,
     },
     cardSubTitle: {
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(14),
       color: Colors[theme].black,
       fontFamily: Fonts.regular,
     },

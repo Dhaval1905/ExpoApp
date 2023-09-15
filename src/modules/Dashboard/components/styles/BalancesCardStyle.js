@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Fonts } from '../../../../assets';
 import {
   Colors,
@@ -10,35 +10,38 @@ import {
 const styling = theme =>
   StyleSheet.create({
     card: {
-      width: '100%',
+      width: Platform.OS === "web" ? "100%" : '100%',
       backgroundColor: Colors[theme].white,
       marginVertical: verticalScale(10),
-      borderRadius: moderateScale(24),
-      paddingHorizontal: horizontalScale(12),
+      borderRadius: Platform.OS === "web" ? 15 : moderateScale(24),
+      paddingHorizontal: Platform.OS === "web" ? 15 : horizontalScale(12),
       overflow: 'hidden',
-      elevation:4
+      elevation: 4
     },
     cardHeader: {
       width: '100%',
-      height: verticalScale(60),
+      height: Platform.OS === "web" ? 25 : verticalScale(60),
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
+      marginTop: Platform.OS === "web" ? 10 : moderateScale(5),
+      marginBottom: Platform.OS === "web" ? 3 : 0
     },
     headerTitle: {
       color: Colors[theme].black,
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(18),
       fontFamily: Fonts.bold,
-      marginLeft:moderateScale(15)
+      marginLeft: Platform.OS === "web" ? 8 : moderateScale(15)
     },
     divider: {
-      borderWidth:0.9,
-      borderStyle:'dashed'
+      borderWidth: 0.9,
+      borderStyle: 'dashed',
     },
     balanceDetailParent: {
       height: verticalScale(90),
       width: '100%',
       flexDirection: 'row',
+      // marginTop: Platform.OS === "web" ? 5 : moderateScale(5)
     },
     balanceDetail: {
       flex: 0.6,
@@ -58,19 +61,19 @@ const styling = theme =>
     },
     availableBalance: {
       color: Colors[theme].black,
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(16),
       fontFamily: Fonts.medium,
       marginRight: horizontalScale(4),
     },
     availableBalanceNumber: {
       color: Colors[theme].emerald,
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(18),
       fontFamily: Fonts.medium,
       // fontWeight:'700'
     },
     balanceDetailText: {
       color: Colors[theme].grey700,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(14),
       fontFamily: Fonts.regular,
     },
     overallBalanceParent: {
@@ -97,15 +100,15 @@ const styling = theme =>
     monthTextParent: {
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor:Colors[theme].blue20,
-      width:horizontalScale(85),
-      height:horizontalScale(35),
-      alignSelf:'center',
-      borderRadius:horizontalScale(50)
+      backgroundColor: Colors[theme].blue20,
+      width: Platform.OS === "web" ? 85 : horizontalScale(85),
+      height: Platform.OS === "web" ? 35 : horizontalScale(35),
+      alignSelf: 'center',
+      borderRadius: horizontalScale(50)
     },
     monthName: {
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(14),
       fontFamily: Fonts.medium,
     },
     monthDetailDivider: {
@@ -132,19 +135,19 @@ const styling = theme =>
       fontFamily: Fonts.regular,
     },
     moneyInNumber: {
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(16),
       color: Colors[theme].emerald,
       fontFamily: Fonts.medium,
     },
     moneyOutNumber: {
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(16),
       color: Colors[theme].black,
       fontFamily: Fonts.medium,
     },
-    iconStyle:{
-      height:horizontalScale(25),
-      width:horizontalScale(25),
-      resizeMode:'contain'
+    iconStyle: {
+      height: Platform.OS === "web" ? 20 : horizontalScale(25),
+      width: Platform.OS === "web" ? 20 : horizontalScale(25),
+      resizeMode: 'contain'
     }
   });
 

@@ -20,13 +20,13 @@ export const Loader = ({ theme }) => {
                     backgroundColor: 'rgba(0, 0, 0, 0.6)'
                 }}>
                     <View style={{
-                        height: Platform.OS === 'web' ? 300 : 150,
-                        width: '50%',
+                        height: Platform.OS === 'web' ? 140 : moderateScale(150),
+                        width: Platform.OS === "web" ? 300 : "85%",
                         backgroundColor: '#FFFFFF',
                         alignSelf: 'center',
                         borderRadius: horizontalScale(24),
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        // justifyContent: 'center'
                     }}>
                         {/* <Image source={Icons.bank_transfer} style={{
                             height:30,
@@ -34,15 +34,15 @@ export const Loader = ({ theme }) => {
                             tintColor:Colors[theme].blue
                         }} /> */}
                         <Image source={require("../../assets/images/please_wait.gif")} style={{
-                            height: Platform.OS === "web" ? moderateScale(60) : moderateScale(70),
-                            width: moderateScale(70),
-                            // backgroundColor: Colors[theme].blue,
+                            height: Platform.OS === "web" ? 60 : moderateScale(70),
+                            width: Platform.OS === "web" ? 50 : moderateScale(70),
+                            marginTop: Platform.OS === "web" ? 10 : 10
                         }} />
                         <Text style={{
                             color: '#000',
                             fontFamily: Fonts.medium,
                             fontSize: 18,
-                            marginTop: horizontalScale(30)
+                            marginTop: Platform.OS === 'web' ? horizontalScale(5) : horizontalScale(30)
                         }} >Please wait...</Text>
                     </View>
                 </View>

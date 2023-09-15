@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View,Image } from 'react-native';
+import { Text, TouchableOpacity, View, Image, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
 import { Strings } from '../../../constants/Strings';
@@ -26,16 +26,16 @@ const BalancesCard = ({
   const [isCardOpen, setIsCardOpen] = useState(false);
   const dashBoardData = useSelector(state => state?.user?.dashBoard)
   return (
-    <View style={[styles.card, !isCardOpen && { height: verticalScale(150) }]}>
+    <View style={[styles.card, !isCardOpen && { height: Platform.OS === "web" ? 90 : verticalScale(150) }]}>
       <View style={styles.cardHeader}>
-        <View style={{flexDirection:'row'}} >
-        <Image source={Images.balances_Icon} style={styles.iconStyle} />
-        <Text style={styles.headerTitle}>{Strings.balances}</Text>
+        <View style={{ flexDirection: 'row' }} >
+          <Image source={Images.balances_Icon} style={styles.iconStyle} />
+          <Text style={styles.headerTitle}>{Strings.balances}</Text>
         </View>
         <TouchableOpacity onPress={() => setIsCardOpen(!isCardOpen)}>
           <Icon
             name={isCardOpen ? 'chevron-up' : 'chevron-down'}
-            size={moderateScale(30)}
+            size={Platform.OS === "web" ? 20 : moderateScale(30)}
             color={Colors[theme]?.black}
           />
         </TouchableOpacity>
@@ -64,12 +64,12 @@ const BalancesCard = ({
             }`}</Text>
         </View>
       </View>
-        <View style={styles.monthTextParent}>
-          <Text style={styles.monthName}>{monthName ?? month}</Text>
-        </View>
+      <View style={styles.monthTextParent}>
+        <Text style={styles.monthName}>{monthName ?? month}</Text>
+      </View>
       <View style={styles.monthDetailParent}>
         <View style={styles.moneyInOutParent}>
-          <View style={[styles.moneyInParent,{borderRightWidth:0.4,borderColor:"#C0C0C0"}]}>
+          <View style={[styles.moneyInParent, { borderRightWidth: 0.4, borderColor: "#C0C0C0" }]}>
             <Text style={styles.moneyDetailText}>{Strings.moneyIn}</Text>
             <Text style={styles.moneyInNumber}>{`${dashBoardData?.money?.in ?? '$0.00'
               }`}</Text>
