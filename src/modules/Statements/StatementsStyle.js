@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../assets';
 import {
   Colors,
   horizontalScale,
@@ -15,16 +15,16 @@ const styling = theme =>
     },
     container: {
       flex: 1,
-      paddingHorizontal: horizontalScale(15),
-      paddingTop: verticalScale(15),
+      paddingHorizontal: Platform.OS === "web" ? 15 : horizontalScale(15),
+      paddingTop: Platform.OS === "web" ? 15 : verticalScale(15),
     },
     statementPeriod: {
       fontFamily: Fonts.medium,
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
     },
     card: {
-      marginTop: verticalScale(10),
+      marginTop: Platform.OS === "web" ? 10 : verticalScale(10),
     },
     divider: {
       height: verticalScale(1),
@@ -33,17 +33,17 @@ const styling = theme =>
     cardItem: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginVertical: verticalScale(10),
-      elevation:4,
+      marginVertical: Platform.OS === "web" ? 10 : verticalScale(10),
+      elevation: 4,
       backgroundColor: Colors[theme].white,
-      padding: horizontalScale(10),
-      borderRadius: moderateScale(20),
-      margin:1
+      padding: Platform.OS === "web" ? 10 : horizontalScale(10),
+      borderRadius: Platform.OS === "web" ? 20 : moderateScale(20),
+      margin: 1
     },
     cardItemTitle: {
       fontFamily: Fonts.medium,
       color: Colors[theme].black,
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
     },
   });
 

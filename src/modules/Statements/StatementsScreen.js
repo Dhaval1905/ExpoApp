@@ -10,7 +10,7 @@ import { showLoader } from '../../redux/actions/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStatement, getStatementById } from '../../redux/actions/ach';
 import { showMessage } from 'react-native-flash-message';
-import FileViewer from "react-native-file-viewer";
+// import FileViewer from "react-native-file-viewer";
 // import RNFetchBlob from 'rn-fetch-blob';
 import { Icons } from '../../assets';
 import { WebView } from 'react-native-webview';
@@ -134,11 +134,11 @@ const StatementsScreen = ({ navigation }) => {
               return (
                 <TouchableOpacity style={styles.cardItem} onPress={() => downloadStatement(item)}>
                   <View style={{
-                    height: verticalScale(60), width: verticalScale(60), backgroundColor: "#FFF9CB", borderRadius: verticalScale(80), justifyContent: 'center', alignItems: 'center'
+                    height: Platform.OS === "web" ? 60 : verticalScale(60), width: Platform.OS === "web" ? 60 : verticalScale(60), backgroundColor: "#FFF9CB", borderRadius: Platform.OS === "web" ? 80 : verticalScale(80), justifyContent: 'center', alignItems: 'center'
                   }}>
-                    <Image source={Icons.statement_pdf} style={{ height: horizontalScale(25), width: horizontalScale(25) }} resizeMode='contain' />
+                    <Image source={Icons.statement_pdf} style={{ height: Platform.OS === "web" ? 25 : horizontalScale(25), width: Platform.OS === "web" ? 25 : horizontalScale(25) }} resizeMode='contain' />
                   </View>
-                  <Text style={[styles.cardItemTitle, { marginLeft: horizontalScale(16) }]}>{`${month} 2022`}</Text>
+                  <Text style={[styles.cardItemTitle, { marginLeft: Platform.OS === "web" ? 16 : horizontalScale(16) }]}>{`${month} 2022`}</Text>
                 </TouchableOpacity>
               )
             }}
@@ -146,7 +146,7 @@ const StatementsScreen = ({ navigation }) => {
         </View>
           :
           <>
-            <Image source={Icons.no_statement} style={{ alignSelf: 'center', height: horizontalScale(100), width: horizontalScale(100), marginTop: verticalScale(180) }} />
+            <Image source={Icons.no_statement} style={{ alignSelf: 'center', height: Platform.OS === "web" ? 100 : horizontalScale(100), width: Platform.OS === "web" ? 100 : horizontalScale(100), marginTop: Platform.OS === "web" ? 180 : verticalScale(180) }} />
             <Text style={[styles.cardItemTitle, { alignSelf: 'center', fontSize: 24, }]}>No statement right now.</Text>
           </>
         }
@@ -158,18 +158,18 @@ const StatementsScreen = ({ navigation }) => {
             <View style={{ backgroundColor: Colors[theme].white, height: Dimensions.get("screen").height, width: "100%" }}>
               <View style={{ paddingLeft: "2%", paddingRight: "2%", flexDirection: "row" }}>
                 <TouchableOpacity onPress={() => setIsDisplay(false)} style={{ width: "15%", justifyContent: "center", alignItems: "center" }}>
-                  <Text style={{ fontSize: moderateScale(16), color: "#035efc", fontWeight: "600" }}>Done</Text>
+                  <Text style={{ fontSize: Platform.OS === "web" ? 16 : moderateScale(16), color: "#035efc", fontWeight: "600" }}>Done</Text>
                 </TouchableOpacity>
                 <View style={{ width: "70%", justifyContent: "center", alignItems: "center" }}>
-                  <Text style={{ fontSize: moderateScale(16), color: "#000", fontWeight: "600" }}>PDF</Text>
+                  <Text style={{ fontSize: Platform.OS === "web" ? 16 : moderateScale(16), color: "#000", fontWeight: "600" }}>PDF</Text>
                 </View>
                 <View style={{ width: "15%", justifyContent: "center", alignItems: "center" }}>
                   <TouchableOpacity onPress={() => openShare()} activeOpacity={.9}>
-                    <Ionicons name='share-outline' size={moderateScale(25)} color={'#035efc'} />
+                    <Ionicons name='share-outline' size={Platform.OS === "web" ? 25 : moderateScale(25)} color={'#035efc'} />
                   </TouchableOpacity>
                 </View>
               </View>
-              <WebView source={{ uri: url }} androidLayerType={'hardware'} style={{ backgroundColor: Colors[theme].white, marginTop: moderateScale(20) }} />
+              <WebView source={{ uri: url }} androidLayerType={'hardware'} style={{ backgroundColor: Colors[theme].white, marginTop: Platform.OS === "web" ? 20 : moderateScale(20) }} />
             </View>
           </SafeAreaView>
         </Modal>
