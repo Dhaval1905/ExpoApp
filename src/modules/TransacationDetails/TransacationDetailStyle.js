@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Fonts } from '../../assets';
 import {
   Colors,
@@ -15,62 +15,62 @@ const styling = theme =>
     },
     container: {
       flex: 1,
-      paddingHorizontal: horizontalScale(10),
+      paddingHorizontal: Platform.OS === "web" ? 10 : horizontalScale(10),
       // paddingTop: verticalScale(150),
     },
     bankLetter: {
       fontFamily: Fonts.bold,
-      fontSize: moderateScale(28),
+      fontSize: Platform.OS === "web" ? 28 : moderateScale(28),
       color: Colors[theme].black,
-      marginTop: verticalScale(15),
+      marginTop: Platform.OS === "web" ? 15 : verticalScale(15),
     },
     bankLetterNote: {
       fontFamily: Fonts.regular,
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       color: Colors[theme].grey500,
-      marginTop: verticalScale(15),
+      marginTop: Platform.OS === "web" ? 15 : verticalScale(15),
     },
     bottomView: {
-      paddingHorizontal: horizontalScale(20),
+      paddingHorizontal: Platform.OS === "web" ? 20 : horizontalScale(20),
     },
     continueButton: {
       backgroundColor: Colors[theme].blue,
       width: '100%',
-      marginVertical: verticalScale(10),
-      height: verticalScale(45),
-      borderRadius: moderateScale(20),
+      marginVertical: Platform.OS === "web" ? 10 : verticalScale(10),
+      height: Platform.OS === "web" ? 45 : verticalScale(45),
+      borderRadius: Platform.OS === "web" ? 20 : moderateScale(20),
     },
     cityParent: {
       flexDirection: 'row',
     },
     card: {
       backgroundColor: Colors[theme].white,
-      borderRadius: moderateScale(15),
-      paddingHorizontal: horizontalScale(8),
-      marginVertical: verticalScale(8),
-      paddingVertical: verticalScale(10),
+      borderRadius: Platform.OS === "web" ? 15 : moderateScale(15),
+      paddingHorizontal: Platform.OS === "web" ? 8 : horizontalScale(8),
+      marginVertical: Platform.OS === "web" ? 8 : verticalScale(8),
+      paddingVertical: Platform.OS === "web" ? 10 : verticalScale(10),
     },
     cardHeader: {
       flexDirection: 'row',
       alignItems: 'center',
     },
     cardHeaderIconParent: {
-      height: moderateScale(40),
-      width: moderateScale(40),
-      margin: moderateScale(10),
+      height: Platform.OS === "web" ? 40 : moderateScale(40),
+      width: Platform.OS === "web" ? 40 : moderateScale(40),
+      margin: Platform.OS === "web" ? 10 : moderateScale(10),
     },
     cardHeaderIcon: {
       height: '100%',
       width: '100%',
     },
     customIconSize: {
-      height: moderateScale(20),
-      width: horizontalScale(20),
+      height: Platform.OS === "web" ? 20 : moderateScale(20),
+      width: Platform.OS === "web" ? 20 : horizontalScale(20),
     },
     cardItems: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginVertical: verticalScale(8),
+      marginVertical: Platform.OS === "web" ? 8 : verticalScale(8),
     },
     cardItemTitle: {
       fontFamily: Fonts.regular,
@@ -78,11 +78,11 @@ const styling = theme =>
     },
     divider: {
       width: '100%',
-      height: verticalScale(0.5),
+      height: Platform.OS === "web" ? .5 : verticalScale(0.5),
       backgroundColor: Colors[theme].grey500,
     },
     cardTitle: {
-      fontSize: moderateScale(15),
+      fontSize: Platform.OS === "web" ? 15 : moderateScale(15),
       fontFamily: Fonts.medium,
       color: Colors[theme].black,
     },
@@ -95,23 +95,23 @@ const styling = theme =>
       color: Colors[theme].black,
     },
     buttonStyle: {
-      height: verticalScale(45),
+      height: Platform.OS === "web" ? 45 : verticalScale(45),
       backgroundColor: Colors[theme].blue,
       width: '100%',
-      marginVertical: verticalScale(12),
-      borderRadius: moderateScale(40),
+      marginVertical: Platform.OS === "web" ? 12 : verticalScale(12),
+      borderRadius: Platform.OS === "web" ? 40 : moderateScale(40),
     },
     buttonTitle: {
       fontFamily: Fonts.bold,
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
     },
     cardContainer: {
       width: "98%",
       alignSelf: "center",
       backgroundColor: 'white',
-      borderRadius: moderateScale(15),
-      padding: horizontalScale(12),
-      marginTop: moderateScale(20),
+      borderRadius: Platform.OS === "web" ? 15 : moderateScale(15),
+      padding: Platform.OS === "web" ? 12 : horizontalScale(12),
+      marginTop: Platform.OS === "web" ? 20 : moderateScale(20),
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -121,15 +121,15 @@ const styling = theme =>
       shadowRadius: 2.22,
       // marginHorizontal:50,
       elevation: 5,
-      marginBottom:5
+      marginBottom: 5
     },
     cardTTxt: {
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       color: "black",
       fontFamily: Fonts.medium
     },
     row: {
-      marginTop: moderateScale(10),
+      marginTop: Platform.OS === "web" ? 10 : moderateScale(10),
       flexDirection: "row"
     },
     cardFirst: {
@@ -138,21 +138,21 @@ const styling = theme =>
       alignItems: "center"
     },
     cardImg: {
-      height: verticalScale(50),
-      width: verticalScale(50),
-      borderRadius: verticalScale(50),
+      height: Platform.OS === "web" ? 50 : verticalScale(50),
+      width: Platform.OS === "web" ? 50 : verticalScale(50),
+      borderRadius: Platform.OS === "web" ? 50 : verticalScale(50),
       backgroundColor: Colors[theme].lightYellow,
       justifyContent: "center",
       alignItems: "center"
     },
-    img: { height: verticalScale(20), width: verticalScale(30) },
+    img: { height: Platform.OS === "web" ? 20 : verticalScale(20), width: Platform.OS === "web" ? 30 : verticalScale(30) },
     txt: {
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       color: Colors[theme].black,
       fontFamily: Fonts.medium
     },
     txt2: {
-      fontSize: moderateScale(11),
+      fontSize: Platform.OS === "web" ? 11 : moderateScale(11),
       color: Colors[theme].grey600,
       fontFamily: Fonts.regular
     },
@@ -162,7 +162,7 @@ const styling = theme =>
       alignItems: "center"
     },
     sTxt: {
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       color: Colors[theme].emerald,
       fontFamily: Fonts.bold
     },
@@ -170,29 +170,29 @@ const styling = theme =>
       // flexDirection: "row",
       // alignItems: "center",  
       justifyContent: "space-between",
-      marginTop: moderateScale(15)
+      marginTop: Platform.OS === "web" ? 15 : moderateScale(15)
     },
     oTxt: {
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       color: Colors[theme].black,
       fontFamily: Fonts.medium
     },
     oTxt2: {
-      fontSize: moderateScale(11),
+      fontSize: Platform.OS === "web" ? 11 : moderateScale(11),
       color: Colors[theme].black,
       fontFamily: Fonts.regular
     },
-    touch: {  
-      height: moderateScale(40),
+    touch: {
+      height: Platform.OS === "web" ? 40 : moderateScale(40),
       width: "34%",
       backgroundColor: Colors[theme].blue,
-      borderRadius: moderateScale(40),
-      marginTop: moderateScale(15),
+      borderRadius: Platform.OS === "web" ? 40 : moderateScale(40),
+      marginTop: Platform.OS === "web" ? 15 : moderateScale(15),
       justifyContent: "center",
       alignItems: "center"
     },
     touchTxt: {
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       color: Colors[theme].white,
       fontFamily: Fonts.regular
     }

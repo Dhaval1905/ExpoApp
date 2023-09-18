@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../../../assets';
 import {
   Colors,
   horizontalScale,
@@ -23,18 +23,22 @@ const styling = theme =>
     },
     card: {
       backgroundColor: Colors[theme].white,
-      padding: horizontalScale(16),
+      // padding: Platform.OS === "web" ? 20 : horizontalScale(16),
+      paddingLeft: Platform.OS === "web" ? 20 : horizontalScale(16),
+      paddingRight: Platform.OS === "web" ? 20 : horizontalScale(16),
+      paddingTop: Platform.OS === "web" ? 20 : horizontalScale(16),
+      paddingBottom: Platform.OS === "web" ? 20 : horizontalScale(16),
       borderRadius: moderateScale(24),
       marginVertical: verticalScale(10),
-      elevation:2
+      elevation: 2
     },
     cardHeader: {
-      height: verticalScale(40),
+      height: Platform.OS === "web" ? 20 : verticalScale(40),
       justifyContent: 'center',
     },
     cardHeaderText: {
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       fontFamily: Fonts.medium,
     },
     datePickerParent: {
@@ -89,13 +93,13 @@ const styling = theme =>
       paddingHorizontal: horizontalScale(14),
     },
     applyFilterButton: {
-      height: verticalScale(40),
+      height: Platform.OS === "web" ? 40 : verticalScale(40),
       borderRadius: moderateScale(20),
       backgroundColor: Colors[theme].blue,
     },
     applyFilter: {
       color: Colors[theme].white,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       fontFamily: Fonts.medium,
     },
     whiteText: {

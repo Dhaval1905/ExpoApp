@@ -109,7 +109,7 @@ const VirtualCardScreen = ({ navigation }) => {
                       <Text style={styles.cardHolder}>CVC</Text>
                       <Text style={styles.cardNumber}>{`***`}</Text>
                     </View>
-                    <View style={{ marginLeft: horizontalScale(30) }}>
+                    <View style={{ marginLeft: Platform.OS === 'web' ? 30 : horizontalScale(30) }}>
                       <Text style={styles.cardHolder}>Valid Thru</Text>
                       <Text style={styles.cardNumber}>{`**/**`}</Text>
                     </View>

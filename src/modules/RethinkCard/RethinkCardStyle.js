@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../assets';
 import {
   Colors,
   horizontalScale,
@@ -15,7 +15,7 @@ const styling = theme =>
     },
     container: {
       flex: 1,
-      paddingHorizontal: horizontalScale(10),
+      paddingHorizontal: Platform.OS === "web" ? 10 : horizontalScale(10),
     },
     cardT: {
       fontFamily: Fonts.medium,
@@ -25,10 +25,10 @@ const styling = theme =>
       justifyContent: 'space-between',
       // alignItems: 'center',
       backgroundColor: Colors[theme].white,
-      padding: moderateScale(20),
-      borderRadius: moderateScale(24),
-      marginVertical: verticalScale(10),
-      elevation:4
+      padding: Platform.OS === "web" ? 20 : moderateScale(20),
+      borderRadius: Platform.OS === "web" ? 24 : moderateScale(24),
+      marginVertical: Platform.OS === "web" ? 10 : verticalScale(10),
+      elevation: 4
     },
     innerView: {
       // flexDirection: 'row',
@@ -36,8 +36,8 @@ const styling = theme =>
     cardTitle: {
       fontFamily: Fonts.medium,
       color: Colors[theme].black,
-      fontSize: moderateScale(16),
-      marginTop: horizontalScale(8),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
+      marginTop: Platform.OS === "web" ? 8 : horizontalScale(8),
     },
   });
 

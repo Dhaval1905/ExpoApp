@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../assets';
 import {
   Colors,
   horizontalScale,
@@ -15,24 +15,24 @@ const styling = theme =>
       alignItems: 'center',
       paddingHorizontal: horizontalScale(10),
       // justifyContent:'center',
-      width:'100%'
+      width: '100%'
     },
     defaultBackBtnStyle: {
-      height: moderateScale(24),
-      width: moderateScale(24),
+      height: Platform.OS === "web" ? 22 : moderateScale(24),
+      width: Platform.OS === "web" ? 22 : moderateScale(24),
       tintColor: Colors[theme]?.black,
     },
     defaultHeaderTitleStyle: {
-      fontSize: moderateScale(20),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(20),
       color: Colors[theme].black,
       fontFamily: Fonts.medium,
-      alignSelf:'center',
-      marginRight:horizontalScale(18)
+      alignSelf: 'center',
+      marginRight: horizontalScale(18)
     },
-    centerView:{
-      flex:1,
-      alignItems:'center',
-      justifyContent:'center'
+    centerView: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   });
 

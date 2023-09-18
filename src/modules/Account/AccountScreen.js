@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, Text, TouchableOpacity, View } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -46,7 +46,7 @@ const AccountScreen = ({ navigation }) => {
         </TouchableOpacity> */}
       </View>
       <View style={styles.usernameParent}>
-        <View style={{ height: horizontalScale(60), width: horizontalScale(60), borderRadius: horizontalScale(70), backgroundColor: '#DFF7FF', alignItems: 'center', justifyContent: 'center' }} >
+        <View style={{ height: Platform.OS === "web" ? 60 : horizontalScale(60), width: Platform.OS === "web" ? 60 : horizontalScale(60), borderRadius: Platform.OS === "web" ? 70 : horizontalScale(70), backgroundColor: '#DFF7FF', alignItems: 'center', justifyContent: 'center' }} >
           <Text style={[styles.detailText, { color: '#6DD8FC', alignSelf: 'center' }]} >{initials}</Text>
         </View>
         <View style={{ marginLeft: 10 }}>
@@ -69,13 +69,13 @@ const AccountScreen = ({ navigation }) => {
             </TouchableOpacity>
             {/* } */}
           </View>
-          <TouchableOpacity style={{ height: horizontalScale(30), width: horizontalScale(30), borderRadius: horizontalScale(30), backgroundColor: '#F2F2F2', alignItems: 'center', justifyContent: 'center', marginLeft: 8 }} onPress={() => {
+          <TouchableOpacity style={{ height: Platform.OS === "web" ? 30 : horizontalScale(30), width: Platform.OS === "web" ? 30 : horizontalScale(30), borderRadius: Platform.OS === "web" ? 30 : horizontalScale(30), backgroundColor: '#F2F2F2', alignItems: 'center', justifyContent: 'center', marginLeft: 8 }} onPress={() => {
             Clipboard.setString(accountInfo?.data?.accountDetail?.[0]?.account_number);
             showToast('Copied');
           }}>
             <MaterialCommunityIcons
               name="content-copy"
-              size={moderateScale(16)}
+              size={Platform.OS === "web" ? 16 : moderateScale(16)}
               color={Colors[theme]?.black}
             />
           </TouchableOpacity>
@@ -88,13 +88,13 @@ const AccountScreen = ({ navigation }) => {
               </Text>
               <Text style={styles.subTitle}>{accountInfo?.data?.accountDetail?.[0]?.bank_routing}</Text>
             </View>
-            <TouchableOpacity style={{ height: horizontalScale(30), width: horizontalScale(30), borderRadius: horizontalScale(30), backgroundColor: '#F2F2F2', alignItems: 'center', justifyContent: 'center', marginLeft: 8 }} onPress={() => {
+            <TouchableOpacity style={{ height: Platform.OS === "web" ? 30 : horizontalScale(30), width: Platform.OS === "web" ? 30 : horizontalScale(30), borderRadius: Platform.OS === "web" ? 30 : horizontalScale(30), backgroundColor: '#F2F2F2', alignItems: 'center', justifyContent: 'center', marginLeft: 8 }} onPress={() => {
               Clipboard.setString(accountInfo?.data?.accountDetail?.[0]?.bank_routing);
               showToast('Copied');
             }}>
               <MaterialCommunityIcons
                 name="content-copy"
-                size={moderateScale(16)}
+                size={Platform.OS === "web" ? 16 : moderateScale(16)}
                 color={Colors[theme]?.black}
               />
             </TouchableOpacity>
@@ -106,23 +106,23 @@ const AccountScreen = ({ navigation }) => {
         <TouchableOpacity
           style={[styles.card, { backgroundColor: '#C3EBEE' }]}
           onPress={() => navigation.navigate(navigationStrings.RETHINKCARD)}>
-          <Image source={Icons.physical_card} style={{ height: horizontalScale(38), width: horizontalScale(38) }} resizeMode='contain' />
+          <Image source={Icons.physical_card} style={{ height: Platform.OS === "web" ? 28 : horizontalScale(38), width: Platform.OS === "web" ? 28 : horizontalScale(38) }} resizeMode='contain' />
           <Text style={styles.cardTitle}>{Strings.rethinkCard}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.card, { backgroundColor: '#FFF9CB' }]}
           onPress={() => navigation.navigate(navigationStrings.STATEMENTS)}>
-          <Image source={Icons.statement} style={{ height: horizontalScale(38), width: horizontalScale(38) }} resizeMode='contain' />
+          <Image source={Icons.statement} style={{ height: Platform.OS === "web" ? 28 : horizontalScale(38), width: Platform.OS === "web" ? 28 : horizontalScale(38) }} resizeMode='contain' />
           <Text style={styles.cardTitle}>{Strings.statement}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.cardParent}>
         <TouchableOpacity style={[styles.card, { backgroundColor: '#F1E0FF' }]} onPress={() => navigation.navigate(navigationStrings.SETTINGS)}>
-          <Image source={Icons.setting} style={{ height: horizontalScale(35), width: horizontalScale(35) }} resizeMode='contain' />
+          <Image source={Icons.setting} style={{ height: Platform.OS === "web" ? 25 : horizontalScale(35), width: Platform.OS === "web" ? 25 : horizontalScale(35) }} resizeMode='contain' />
           <Text style={styles.cardTitle}>{Strings.settings}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate(navigationStrings.SUPPORT)} style={[styles.card, { backgroundColor: '#D6DAFF' }]} >
-          <Image source={Icons.info} style={{ height: horizontalScale(35), width: horizontalScale(35) }} resizeMode='contain' />
+          <Image source={Icons.info} style={{ height: Platform.OS === "web" ? 25 : horizontalScale(35), width: Platform.OS === "web" ? 25 : horizontalScale(35) }} resizeMode='contain' />
           <Text style={styles.cardTitle}>{Strings.support}</Text>
         </TouchableOpacity>
       </View>

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../assets';
 import {
   Colors,
   horizontalScale,
@@ -15,39 +15,39 @@ const styling = theme =>
     },
     container: {
       flex: 1,
-      paddingHorizontal: horizontalScale(12),
-      paddingTop: verticalScale(20),
+      paddingHorizontal: Platform.OS === "web" ? 12 : horizontalScale(12),
+      paddingTop: Platform.OS === "web" ? 20 : verticalScale(20),
     },
     cardTitle: {
       fontFamily: Fonts.regular,
       color: Colors[theme].grey500,
-      fontSize:horizontalScale(14),
-      marginTop:horizontalScale(10)
+      fontSize: Platform.OS === "web" ? 14 : horizontalScale(14),
+      marginTop: Platform.OS === "web" ? 10 : horizontalScale(10)
     },
     card: {
       backgroundColor: Colors[theme].white,
-      borderRadius: moderateScale(24),
-      paddingHorizontal: horizontalScale(12),
-      padding: verticalScale(12),
-      marginTop:horizontalScale(10)
+      borderRadius: Platform.OS === "web" ? 24 : moderateScale(24),
+      paddingHorizontal: Platform.OS === "web" ? 12 : horizontalScale(12),
+      padding: Platform.OS === "web" ? 12 : verticalScale(12),
+      marginTop: Platform.OS === "web" ? 10 : horizontalScale(10)
       // elevation:1
     },
     navigateButtons: {
       flexDirection: 'row',
-      height: verticalScale(45),
+      height: Platform.OS === "web" ? 45 : verticalScale(45),
       alignItems: 'center',
       justifyContent: 'space-between',
     },
     navigateButtonText: {
       fontFamily: Fonts.medium,
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
-      marginLeft:horizontalScale(8)
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
+      marginLeft: Platform.OS === "web" ? 8 : horizontalScale(8)
     },
     divider: {
       width: '100%',
       backgroundColor: Colors[theme].grey300,
-      height: verticalScale(2),
+      height: Platform.OS === "web" ? 2 : verticalScale(2),
     },
     logout: {
       color: Colors[theme].white,
@@ -55,15 +55,15 @@ const styling = theme =>
     },
     logoutButton: {
       width: '100%',
-      height: verticalScale(50),
+      height: Platform.OS === "web" ? 50 : verticalScale(50),
       backgroundColor: Colors[theme].blue,
-      borderRadius: moderateScale(30),
-      marginBottom: verticalScale(30),
+      borderRadius: Platform.OS === "web" ? 30 : moderateScale(30),
+      marginBottom: Platform.OS === "web" ? 30 : verticalScale(30),
     },
     version: {
       fontFamily: Fonts.regular,
       alignSelf: 'center',
-      marginTop: verticalScale(30),
+      marginTop: Platform.OS === "web" ? 30 : verticalScale(30),
     },
   });
 

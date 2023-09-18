@@ -1,17 +1,17 @@
-import {useRoute} from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import {Text, TouchableOpacity, View,FlatList} from 'react-native';
+import { Text, TouchableOpacity, View, FlatList, Platform } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {CustomHeader} from '../../components';
-import {navigationStrings, Strings} from '../../constants';
-import {Colors, horizontalScale, moderateScale} from '../../theme';
+import { CustomHeader } from '../../components';
+import { navigationStrings, Strings } from '../../constants';
+import { Colors, horizontalScale, moderateScale } from '../../theme';
 import styling from './SupportStyle';
 import { getCardById, getProductCard } from '../../redux/actions/card';
 import { useDispatch, useSelector } from 'react-redux';
 import { showLoader } from '../../redux/actions/user';
 import { Fonts } from '../../assets';
 
-const Support = ({navigation}) => {
+const Support = ({ navigation }) => {
   const route = useRoute();
   const dispatch = useDispatch();
   const theme = route?.params?.theme;
@@ -27,7 +27,7 @@ const Support = ({navigation}) => {
         onPressBack={() => navigation.goBack()}
       />
       <View style={styles.container}>
-     
+
         <TouchableOpacity
           style={styles.card}
           onPress={() => navigation.navigate(navigationStrings?.SUPPORTTICKET)}>
@@ -35,16 +35,16 @@ const Support = ({navigation}) => {
             <FontAwesome
               name={'user-o'}
               color={Colors[theme]?.black}
-              size={moderateScale(20)}
+              size={Platform.OS === "web" ? 20 : moderateScale(20)}
             />
             <View>
-            <Text style={styles.cardTitle}>{`Support Tickets`}</Text>
+              <Text style={styles.cardTitle}>{`Support Tickets`}</Text>
             </View>
           </View>
           <FontAwesome
             name={'angle-right'}
             color={Colors[theme]?.black}
-            size={moderateScale(24)}
+            size={Platform.OS === "web" ? 24 : moderateScale(24)}
           />
         </TouchableOpacity>
         <TouchableOpacity
@@ -54,16 +54,16 @@ const Support = ({navigation}) => {
             <FontAwesome
               name={'question-circle-o'}
               color={Colors[theme]?.black}
-              size={moderateScale(20)}
+              size={Platform.OS === "web" ? 20 : moderateScale(20)}
             />
             <View>
-            <Text style={styles.cardTitle}>{`Help Center`}</Text>
+              <Text style={styles.cardTitle}>{`Help Center`}</Text>
             </View>
           </View>
           <FontAwesome
             name={'angle-right'}
             color={Colors[theme]?.black}
-            size={moderateScale(24)}
+            size={Platform.OS === "web" ? 24 : moderateScale(24)}
           />
         </TouchableOpacity>
       </View>

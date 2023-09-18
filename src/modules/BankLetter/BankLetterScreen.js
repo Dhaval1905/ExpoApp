@@ -1,6 +1,6 @@
-import { useRoute } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { Linking, Text, View, Image } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { Linking, Text, View, Image, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { CustomButton, CustomHeader } from '../../components';
 import { Strings, navigationStrings } from '../../constants';
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showLoader } from '../../redux/actions/user';
 import { getBankLetter, getProductCard } from '../../redux/actions/card';
 import { showMessage } from 'react-native-flash-message';
-import FileViewer from "react-native-file-viewer";
+// import FileViewer from "react-native-file-viewer";
 // import RNFetchBlob from 'rn-fetch-blob';
 import { Icons } from '../../assets';
 
@@ -30,7 +30,7 @@ const BankLetterScreen = ({ navigation }) => {
           color={Colors[theme]?.black}
         /> */}
         {/* <Text style={styles.bankLetter}>{Strings.bankLetter}</Text> */}
-        <Image source={Icons.bankLetter} style={{ height: horizontalScale(150), width: horizontalScale(150) }} resizeMode='contain' />
+        <Image source={Icons.bankLetter} style={{ height: Platform.OS === "web" ? 150 : horizontalScale(150), width: Platform.OS === "web" ? 150 : horizontalScale(150) }} resizeMode='contain' />
         <Text style={styles.bankLetterNote}>{Strings.bankLetterNote}</Text>
       </View>
       <View style={styles.bottomView}>

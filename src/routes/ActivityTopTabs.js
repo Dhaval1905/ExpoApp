@@ -1,7 +1,7 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { CustomHeader } from '../components';
 import { navigationStrings } from '../constants';
 // import { FinancialInsights, Transactions, Transactions1 } from '../modules';
@@ -32,12 +32,14 @@ const ActivityTopTabs = ({ navigation }) => {
 
   return (
     <View style={{ backgroundColor: Colors[theme]?.white, flex: 1 }}>
+      <View style={{ marginTop: Platform.OS === "web" ? 10 : 0 }} />
       <CustomHeader
         theme={theme}
         backButton={false}
         headerTitle={"Transaction Activity"}
         headerStyle={styles.activityHeaderStyle}
       />
+      <View style={{ marginBottom: Platform.OS === "web" ? 10 : 0 }} />
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarLabel: ({ focused }) => {
@@ -63,7 +65,7 @@ const ActivityTopTabs = ({ navigation }) => {
             // elevation:5
           },
           tabBarIndicatorStyle: {
-            height: 48,
+            height: Platform.OS === "web" ? 40 : 48,
             borderRadius: horizontalScale(24),
             backgroundColor: Colors[theme].blue,
           },

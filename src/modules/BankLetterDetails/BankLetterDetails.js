@@ -1,6 +1,6 @@
-import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Linking, Text, View, ScrollView, Platform, SafeAreaView, Modal, Dimensions, TouchableOpacity } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { CustomButton, CustomHeader } from '../../components';
 import { Strings } from '../../constants';
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showLoader } from '../../redux/actions/user';
 import { getBankLetter, getProductCard } from '../../redux/actions/card';
 import { showMessage } from 'react-native-flash-message';
-import FileViewer from "react-native-file-viewer";
+// import FileViewer from "react-native-file-viewer";
 // import RNFetchBlob from 'rn-fetch-blob';
 import { WebView } from 'react-native-webview';
 // import Share from 'react-native-share';

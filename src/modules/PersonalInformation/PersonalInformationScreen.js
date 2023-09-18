@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, Text, TouchableOpacity, View } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useSelector } from 'react-redux';
 import { CustomHeader } from '../../components';
@@ -70,12 +70,12 @@ const PersonalInformationScreen = ({ navigation }) => {
                     </Text>
                   </View>
                   {isFirstValue && <View style={styles.imageParent}>
-                    <FeatherIcon name={getIcon()} size={moderateScale(30)} color={'#000'}/>
+                    <FeatherIcon name={getIcon()} size={Platform.OS === "web" ? 30 : moderateScale(30)} color={'#000'} />
                   </View>}
                   {!isFirstValue ? (
                     <FeatherIcon
                       name={'chevron-right'}
-                      size={moderateScale(18)}
+                      size={Platform.OS === "web" ? 18 : moderateScale(18)}
                       color={'#000'}
                     />
                   ) : (

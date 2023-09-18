@@ -1,6 +1,7 @@
-import {StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import Colors from './Colors';
 import { Fonts } from '../assets';
+import { moderateScale } from './Metrics';
 
 const styling = theme =>
   StyleSheet.create({
@@ -9,10 +10,11 @@ const styling = theme =>
       backgroundColor: Colors[theme].white,
     },
     activityHeaderStyle: {
-      backgroundColor:Colors[theme].screenBackground,
+      backgroundColor: Colors[theme].screenBackground,
     },
     activityTabLable: {
-      fontFamily:Fonts.regular
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
+      fontFamily: Fonts.regular
     },
   });
 

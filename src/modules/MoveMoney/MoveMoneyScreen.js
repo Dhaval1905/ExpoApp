@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
-import { ImageBackground, ScrollView, Text, View } from 'react-native';
+import { ImageBackground, Platform, ScrollView, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Icons } from '../../assets';
 import { MoveMoneyCard } from '../../components';
@@ -27,7 +27,7 @@ const MoveMoneyScreen = ({ navigation }) => {
             <Text style={styles.balance}>{dashBoardData?.balances?.available_balance?.text}</Text>
             <Text style={styles.availableNow}>{Strings.availableNow}</Text>
           </View>
-          <View style={{ width: '100%', paddingHorizontal: horizontalScale(14), backgroundColor: Colors[theme].screenBackground, borderTopRightRadius: horizontalScale(24), borderTopLeftRadius: horizontalScale(24), marginTop: horizontalScale(20) }}>
+          <View style={{ width: '100%', paddingHorizontal: Platform.OS === "web" ? 14 : horizontalScale(14), backgroundColor: Colors[theme].screenBackground, borderTopRightRadius: Platform.OS === "web" ? 24 : horizontalScale(24), borderTopLeftRadius: Platform.OS === "web" ? 24 : horizontalScale(24), marginTop: Platform.OS === "web" ? 20 : horizontalScale(20) }}>
             {
               isDashboard ? null :
                 <MoveMoneyCard

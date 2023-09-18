@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../assets';
 import {
   Colors,
   horizontalScale,
@@ -15,8 +15,8 @@ const styling = theme =>
     },
     container: {
       flex: 1,
-      paddingHorizontal: horizontalScale(20),
-      paddingTop: verticalScale(25),
+      paddingHorizontal: Platform.OS === "web" ? 20 : horizontalScale(20),
+      paddingTop: Platform.OS === "web" ? 25 : verticalScale(25),
     },
     cardTitle: {
       fontFamily: Fonts.regular,
@@ -24,16 +24,16 @@ const styling = theme =>
     },
     card: {
       backgroundColor: Colors[theme].white,
-      borderRadius: moderateScale(16),
+      borderRadius: Platform.OS === "web" ? 16 : moderateScale(16),
       overflow: 'hidden',
-      paddingHorizontal: horizontalScale(10),
-      marginTop: verticalScale(8),
-      marginBottom: verticalScale(25),
-      elevation:1
+      paddingHorizontal: Platform.OS === "web" ? 10 : horizontalScale(10),
+      marginTop: Platform.OS === "web" ? 8 : verticalScale(8),
+      marginBottom: Platform.OS === "web" ? 25 : verticalScale(25),
+      elevation: 1
     },
     details: {
       // width: horizontalScale(280),
-      marginRight: horizontalScale(10),
+      marginRight: Platform.OS === "web" ? 10 : horizontalScale(10),
     },
     imageParent: {
       justifyContent: 'center',
@@ -41,25 +41,25 @@ const styling = theme =>
     },
     navigateButtons: {
       flexDirection: 'row',
-      padding: verticalScale(12),
-      marginVertical: verticalScale(2),
+      padding: Platform.OS === "web" ? 12 : verticalScale(12),
+      marginVertical: Platform.OS === "web" ? 2 : verticalScale(2),
       alignItems: 'center',
-      justifyContent:'space-between'
+      justifyContent: 'space-between'
     },
     navigateButtonTitle: {
       fontFamily: Fonts.medium,
       color: Colors[theme].grey500,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
     },
     navigateButtonSubtitle: {
       fontFamily: Fonts.regular,
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
     },
     divider: {
       width: '100%',
       backgroundColor: Colors[theme].grey300,
-      height: verticalScale(2),
+      height: Platform.OS === "web" ? 2 : verticalScale(2),
     },
   });
 

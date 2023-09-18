@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showLoader } from '../../redux/actions/user';
 import { getBankLetter, getProductCard } from '../../redux/actions/card';
 import { showMessage } from 'react-native-flash-message';
-import FileViewer from "react-native-file-viewer";
+// import FileViewer from "react-native-file-viewer";
 // import RNFetchBlob from 'rn-fetch-blob';
 import { getPdf } from '../../redux/actions/tansaction';
 import { Fonts, Icons } from '../../assets';

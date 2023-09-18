@@ -1,8 +1,8 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
-import {TextInput} from 'react-native-paper';
+import { Platform, TouchableOpacity, View } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Colors, moderateScale} from '../../theme';
+import { Colors, moderateScale } from '../../theme';
 import styling from './ModalButtonStyle';
 
 const ModalButton = ({
@@ -23,17 +23,17 @@ const ModalButton = ({
   return (
     <TouchableOpacity
       onPress={onPressButton}
-      style={[{height, width, marginTop, marginBottom, marginRight, marginLeft},{flexDirection:'row',zIndex:1}]}>
+      style={[{ height, width, marginTop, marginBottom, marginRight, marginLeft }, { flexDirection: 'row', zIndex: 1, alignItems: "center" }]}>
       <TextInput
         disabled
         mode={'outlined'}
-        theme={{ roundness: 45 }} 
+        theme={{ roundness: Platform.OS === "web" ? 20 : 45 }}
         label={buttonLable}
         value={buttonValue}
         activeOutlineColor={Colors[theme]?.black}
-        style={[styles.buttonBackground, {height, width}]}
+        style={[styles.buttonBackground, { height, width }]}
       />
-      {showArrow &&<View style={styles.dropdownParent}>
+      {showArrow && <View style={styles.dropdownParent}>
         <Icon
           name={'chevron-down'}
           size={moderateScale(24)}

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View, Alert, Image } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, Alert, Image, Platform } from 'react-native';
 import { Switch } from 'react-native-paper';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,7 +25,7 @@ const SettingsScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const [bioSwitch, setBioSwitch] = useState(false);
   const [notificationSwitch, setNotificationSwitch] = useState(false);
-  const userDetails=useSelector(state => state?.user?.login)
+  const userDetails = useSelector(state => state?.user?.login)
   const getImage = (values) => {
     if (values === Strings.personalInformation) {
       return Icons.setting_user
@@ -39,7 +39,7 @@ const SettingsScreen = ({ navigation }) => {
       return Icons.transfer_limit
     }
   }
-console.log(userDetails?.data?.businessDetail?.from_database?.business_type)
+
   return (
     <View style={styles.screen}>
       <CustomHeader
@@ -70,76 +70,76 @@ console.log(userDetails?.data?.businessDetail?.from_database?.business_type)
               };
               return (
                 <>
-                {(userDetails?.data?.accountDetail?.[0]?.customer_type==='PERSONAL' && index===0)?<View key={index} style={{ marginTop: index === 0 ? horizontalScale(12) : 0 }} >
-                  <TouchableOpacity
-                    style={styles.navigateButtons}
-                    onPress={onPress}
-                    key={index}>
-                    <View style={{
-                      flexDirection: 'row',
-                      alignItems: 'center'
-                    }}>
-                      <Image source={getImage(values)} style={{
-                        height: horizontalScale(20),
-                        width: horizontalScale(20)
-                      }} resizeMode='contain'></Image>
-                      <Text style={styles.navigateButtonText}>{values}</Text>
-                    </View>
-                    <FeatherIcon
-                      name={'chevron-right'}
-                      size={moderateScale(18)}
-                      color={'#000'}
-                    />
-                  </TouchableOpacity>
-                </View>
-                :
-                (userDetails?.data?.accountDetail?.[0]?.customer_type!=='PERSONAL' && index===1)?
-                <View key={index} style={{ marginTop: index === 0 ? horizontalScale(12) : 0 }} >
-                <TouchableOpacity
-                  style={styles.navigateButtons}
-                  onPress={onPress}
-                  key={index}>
-                  <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center'
-                  }}>
-                    <Image source={getImage(values)} style={{
-                      height: horizontalScale(20),
-                      width: horizontalScale(20)
-                    }} resizeMode='contain'></Image>
-                    <Text style={styles.navigateButtonText}>{values}</Text>
+                  {(userDetails?.data?.accountDetail?.[0]?.customer_type === 'PERSONAL' && index === 0) ? <View key={index} style={{ marginTop: index === 0 ? Platform.OS === "web" ? 12 : horizontalScale(12) : 0 }} >
+                    <TouchableOpacity
+                      style={styles.navigateButtons}
+                      onPress={onPress}
+                      key={index}>
+                      <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center'
+                      }}>
+                        <Image source={getImage(values)} style={{
+                          height: Platform.OS === "web" ? 20 : horizontalScale(20),
+                          width: Platform.OS === "web" ? 20 : horizontalScale(20)
+                        }} resizeMode='contain'></Image>
+                        <Text style={styles.navigateButtonText}>{values}</Text>
+                      </View>
+                      <FeatherIcon
+                        name={'chevron-right'}
+                        size={Platform.OS === "web" ? 18 : moderateScale(18)}
+                        color={'#000'}
+                      />
+                    </TouchableOpacity>
                   </View>
-                  <FeatherIcon
-                    name={'chevron-right'}
-                    size={moderateScale(18)}
-                    color={'#000'}
-                  />
-                </TouchableOpacity>
-              </View>:
-              index>1 &&
-               <View key={index} style={{ marginTop: index === 0 ? horizontalScale(12) : 0 }} >
-               <TouchableOpacity
-                 style={styles.navigateButtons}
-                 onPress={onPress}
-                 key={index}>
-                 <View style={{
-                   flexDirection: 'row',
-                   alignItems: 'center'
-                 }}>
-                   <Image source={getImage(values)} style={{
-                     height: horizontalScale(20),
-                     width: horizontalScale(20)
-                   }} resizeMode='contain'></Image>
-                   <Text style={styles.navigateButtonText}>{values}</Text>
-                 </View>
-                 <FeatherIcon
-                   name={'chevron-right'}
-                   size={moderateScale(18)}
-                   color={'#000'}
-                 />
-               </TouchableOpacity>
-             </View>
-                }
+                    :
+                    (userDetails?.data?.accountDetail?.[0]?.customer_type !== 'PERSONAL' && index === 1) ?
+                      <View key={index} style={{ marginTop: index === 0 ? Platform.OS === "web" ? 12 : horizontalScale(12) : 0 }} >
+                        <TouchableOpacity
+                          style={styles.navigateButtons}
+                          onPress={onPress}
+                          key={index}>
+                          <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                          }}>
+                            <Image source={getImage(values)} style={{
+                              height: Platform.OS === "web" ? 20 : horizontalScale(20),
+                              width: Platform.OS === "web" ? 20 : horizontalScale(20)
+                            }} resizeMode='contain'></Image>
+                            <Text style={styles.navigateButtonText}>{values}</Text>
+                          </View>
+                          <FeatherIcon
+                            name={'chevron-right'}
+                            size={Platform.OS === "web" ? 18 : moderateScale(18)}
+                            color={'#000'}
+                          />
+                        </TouchableOpacity>
+                      </View> :
+                      index > 1 &&
+                      <View key={index} style={{ marginTop: index === 0 ? Platform.OS === "web" ? 12 : horizontalScale(12) : 0 }} >
+                        <TouchableOpacity
+                          style={styles.navigateButtons}
+                          onPress={onPress}
+                          key={index}>
+                          <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                          }}>
+                            <Image source={getImage(values)} style={{
+                              height: Platform.OS === "web" ? 20 : horizontalScale(20),
+                              width: Platform.OS === "web" ? 20 : horizontalScale(20)
+                            }} resizeMode='contain'></Image>
+                            <Text style={styles.navigateButtonText}>{values}</Text>
+                          </View>
+                          <FeatherIcon
+                            name={'chevron-right'}
+                            size={Platform.OS === "web" ? 18 : moderateScale(18)}
+                            color={'#000'}
+                          />
+                        </TouchableOpacity>
+                      </View>
+                  }
                 </>
               );
             })}
@@ -151,8 +151,8 @@ console.log(userDetails?.data?.businessDetail?.from_database?.business_type)
             {settings?.map((values, index) => {
               const isLastValue = index === settings?.length - 1;
               return (
-                <View key={index} style={{ marginTop: index === 0 ? horizontalScale(12) : 0 }}>
-                  {userDetails?.data?.businessDetail?.from_database?.business_type===1 && index===2 ?<TouchableOpacity
+                <View key={index} style={{ marginTop: index === 0 ? Platform.OS === "web" ? 12 : horizontalScale(12) : 0 }}>
+                  {userDetails?.data?.businessDetail?.from_database?.business_type === 1 && index === 2 ? <TouchableOpacity
                     style={styles.navigateButtons}
                     key={index}
                     onPress={() => {
@@ -160,56 +160,56 @@ console.log(userDetails?.data?.businessDetail?.from_database?.business_type)
                         navigation.navigate(navigationStrings.CHANGEPASSWORD);
                       } else if (index === 1) {
                         navigation.navigate(navigationStrings.TESTLINK);
-                      }else if (index === 2) {
+                      } else if (index === 2) {
                         navigation.navigate(navigationStrings.LICENSE)
-     }
+                      }
                     }}>
                     <View style={{
                       flexDirection: 'row',
                       alignItems: 'center',
                     }}>
-                      <Image source={index===0?Icons.change_password:index===1?Icons.disclosure:Icons.license} style={{
-                        height: horizontalScale(20),
-                        width: horizontalScale(20)
+                      <Image source={index === 0 ? Icons.change_password : index === 1 ? Icons.disclosure : Icons.license} style={{
+                        height: Platform.OS === "web" ? 20 : horizontalScale(20),
+                        width: Platform.OS === "web" ? 20 : horizontalScale(20)
                       }} resizeMode='contain'></Image>
                       <Text style={styles.navigateButtonText}>{values}</Text>
                     </View>
-                      <FeatherIcon
-                        name={'chevron-right'}
-                        size={moderateScale(18)}
-                        color={'#000'}
-                      />
-                  </TouchableOpacity>:
-                  <>
-                  {index!==2&& <TouchableOpacity
-                  style={styles.navigateButtons}
-                  key={index}
-                  onPress={() => {
-                    if (index === 0) {
-                      navigation.navigate(navigationStrings.CHANGEPASSWORD);
-                    } else if (index === 1) {
-                      navigation.navigate(navigationStrings.TESTLINK);
-                    }else if (index === 2) {
-                      navigation.navigate(navigationStrings.LICENSE)
-   }
-                  }}>
-                  <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}>
-                    <Image source={index===0?Icons.change_password:index===1?Icons.disclosure:Icons.license} style={{
-                      height: horizontalScale(20),
-                      width: horizontalScale(20)
-                    }} resizeMode='contain'></Image>
-                    <Text style={styles.navigateButtonText}>{values}</Text>
-                  </View>
                     <FeatherIcon
                       name={'chevron-right'}
-                      size={moderateScale(18)}
+                      size={Platform.OS === "web" ? 18 : moderateScale(18)}
                       color={'#000'}
                     />
-                </TouchableOpacity>}
-                </>
+                  </TouchableOpacity> :
+                    <>
+                      {index !== 2 && <TouchableOpacity
+                        style={styles.navigateButtons}
+                        key={index}
+                        onPress={() => {
+                          if (index === 0) {
+                            navigation.navigate(navigationStrings.CHANGEPASSWORD);
+                          } else if (index === 1) {
+                            navigation.navigate(navigationStrings.TESTLINK);
+                          } else if (index === 2) {
+                            navigation.navigate(navigationStrings.LICENSE)
+                          }
+                        }}>
+                        <View style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                        }}>
+                          <Image source={index === 0 ? Icons.change_password : index === 1 ? Icons.disclosure : Icons.license} style={{
+                            height: Platform.OS === "web" ? 20 : horizontalScale(20),
+                            width: Platform.OS === "web" ? 20 : horizontalScale(20)
+                          }} resizeMode='contain'></Image>
+                          <Text style={styles.navigateButtonText}>{values}</Text>
+                        </View>
+                        <FeatherIcon
+                          name={'chevron-right'}
+                          size={Platform.OS === "web" ? 18 : moderateScale(18)}
+                          color={'#000'}
+                        />
+                      </TouchableOpacity>}
+                    </>
                   }
                 </View>
               );
@@ -226,9 +226,9 @@ console.log(userDetails?.data?.businessDetail?.from_database?.business_type)
               'ReThinkfi',
               "Are you sure,you want to logout!",
               [{
-                text: 'OK', onPress: async() => {
+                text: 'OK', onPress: async () => {
                   AsyncStorage.removeItem(constants.LOGIN_TOKEN)
-                  await save('otpVerify',false)
+                  await save('otpVerify', false)
                   navigation.navigate(navigationStrings.AUTHSTACK)
                 }
               },

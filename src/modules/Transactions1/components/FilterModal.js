@@ -1,8 +1,10 @@
 import moment from 'moment';
 import React, { useState } from 'react';
 import {
+  Dimensions,
   Image,
   Modal,
+  Platform,
   SafeAreaView,
   ScrollView,
   Text,
@@ -19,8 +21,8 @@ import {
   CustomHeader,
   ModalButton,
 } from '../../../components';
-import {dateRange, Strings} from '../../../constants';
-import {useFilterData} from '../../../hooks';
+import { dateRange, Strings } from '../../../constants';
+import { useFilterData } from '../../../hooks';
 import {
   Colors,
   horizontalScale,
@@ -33,29 +35,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTransaction, getTransaction1 } from '../../../redux/actions/tansaction';
 import { showLoader } from '../../../redux/actions/user';
 
-const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
+const FilterModal = ({ onPressBack, visible, theme, setModalVisible }) => {
   const styles = styling(theme);
   const userDetails = useSelector(state => state?.user?.login)
   const dispatch = useDispatch()
-  const [demo,setDemo]=useState(false)
-  const [transactionsTypes,setTransactionsTypes]=useState([
+  const [demo, setDemo] = useState(false)
+  const [transactionsTypes, setTransactionsTypes] = useState([
     {
-      title:"ACH",
-      image:Icons.bank_transfer,
-      color:'#DFF7FF',
-      status:false
+      title: "ACH",
+      image: Icons.bank_transfer,
+      color: '#DFF7FF',
+      status: false
     },
     {
-      title:"WIRE",
-      image:Icons.ach_transfer,
-      color:'#F9EFFF',
-      status:false
+      title: "WIRE",
+      image: Icons.ach_transfer,
+      color: '#F9EFFF',
+      status: false
     },
     {
-      title:"Internal Transfer",
-      image:Icons.dollor_transfer,
-      color:'#F9FEDA',
-      status:false
+      title: "Internal Transfer",
+      image: Icons.dollor_transfer,
+      color: '#F9FEDA',
+      status: false
     }
   ])
   const {
@@ -79,12 +81,12 @@ const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
     setTransactionTypeData,
   } = useFilterData();
 
-  const setType=async(index)=>{
-    transactionsTypes.forEach((element,i) => {
-      if(i===index){
-        element.status=true
-      }else{
-        element.status=false
+  const setType = async (index) => {
+    transactionsTypes.forEach((element, i) => {
+      if (i === index) {
+        element.status = true
+      } else {
+        element.status = false
       }
     });
     setTransactionsTypes(transactionsTypes)
@@ -92,13 +94,15 @@ const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
   }
 
   return (
-    <Modal visible={visible ?? false} style={{flex: 1}}>
+    <Modal visible={visible ?? false} style={{ flex: 1 }}>
       <SafeAreaView style={styles.screen}>
+        <View style={{ marginTop: Platform.OS === "web" ? 10 : 0 }} />
         <CustomHeader
           theme={theme}
           headerTitle={Strings.filter}
           onPressBack={onPressBack}
         />
+        <View style={{ marginBottom: Platform.OS === "web" ? 10 : 0 }} />
         <ScrollView style={styles.scrollView}>
           <View style={styles.container}>
             <View style={styles.card}>
@@ -118,26 +122,28 @@ const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
                 <ModalButton
                   theme={theme}
                   buttonLable={Strings.from?.toUpperCase()}
-                  buttonValue={fromDate?moment(fromDate)
+                  buttonValue={fromDate ? moment(fromDate)
                     ?.format('MMM DD,YYYY')
-                    ?.toString():''}
-                  width={horizontalScale(155)}
+                    ?.toString() : ''}
+                  width={Platform.OS === "web" ? Dimensions.get("window").width / 2.35 : horizontalScale(155)}
                   marginRight={horizontalScale(10)}
                   onPressButton={() => {
                     setIsFromDate(true);
                     setOpen(true);
                   }}
+                  height={Platform.OS === "web" ? 50 : moderateScale(60)}
                 />
                 <ModalButton
                   theme={theme}
                   buttonLable={Strings.to?.toUpperCase()}
-                  buttonValue={toDate?moment(toDate)
+                  buttonValue={toDate ? moment(toDate)
                     ?.format('MMM DD,YYYY')
-                    ?.toString():''}
-                  width={horizontalScale(155)}
+                    ?.toString() : ''}
+                  width={Platform.OS === "web" ? Dimensions.get("window").width / 2.35 : horizontalScale(155)}
                   onPressButton={() => {
                     setOpen(true);
                   }}
+                  height={Platform.OS === "web" ? 50 : moderateScale(60)}
                 />
               </View>
               <View style={styles.cardHeader}>
@@ -145,19 +151,19 @@ const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
                   {Strings.transactionType}
                 </Text>
               </View>
-              <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginVertical:8}}>
-              {transactionsTypes?.map((item, index) => {
-                return (
-                  <TouchableOpacity style={{alignItems:'center'}} onPress={()=>setType(index)}>
-                  <View style={{ height: verticalScale(60), width: verticalScale(60), backgroundColor: item?.color, borderRadius: verticalScale(80), justifyContent: 'center', alignItems: 'center' }} >
-                  <Image source={item?.image} resizeMode='contain' style={{
-                       height: verticalScale(35), width: verticalScale(35)
-                  }}></Image>
-                </View>
-                  <Text style={{fontFamily:Fonts.regular,color:item?.status?Colors[theme].blue:'#000',fontSize:12,marginTop:10}} >{item?.title}</Text>
-                  </TouchableOpacity>
-                )
-              })}
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 8 }}>
+                {transactionsTypes?.map((item, index) => {
+                  return (
+                    <TouchableOpacity style={{ alignItems: 'center' }} onPress={() => setType(index)}>
+                      <View style={{ height: verticalScale(60), width: verticalScale(60), backgroundColor: item?.color, borderRadius: verticalScale(80), justifyContent: 'center', alignItems: 'center' }} >
+                        <Image source={item?.image} resizeMode='contain' style={{
+                          height: verticalScale(35), width: verticalScale(35)
+                        }}></Image>
+                      </View>
+                      <Text style={{ fontFamily: Fonts.regular, color: item?.status ? Colors[theme].blue : '#000', fontSize: 12, marginTop: 10 }} >{item?.title}</Text>
+                    </TouchableOpacity>
+                  )
+                })}
               </View>
               {/* <View style={styles.cardHeader}>
                 <Text style={styles.cardHeaderText}>
@@ -186,23 +192,23 @@ const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
             theme={theme}
             buttonTitle={Strings.applyFilters}
             buttonTitleStyle={styles.applyFilter}
-            buttonStyle={[styles.applyFilterButton,{width:'100%'}]}
-            onBtnPress={async()=>{
-              let type=""
-              transactionsTypes.forEach((element)=>{
-                if(element?.status){  
-                type=element?.title.toLowerCase()
+            buttonStyle={[styles.applyFilterButton, { width: '100%' }]}
+            onBtnPress={async () => {
+              let type = ""
+              transactionsTypes.forEach((element) => {
+                if (element?.status) {
+                  type = element?.title.toLowerCase()
                 }
               })
               await dispatch(showLoader(true))
               let data = {
                 account_id: userDetails?.data?.accountDetail?.[0]?.id,
                 transaction_type: 'posted',
-                limit:100
+                limit: 100
               }
-              if(fromDate) data.from_date=moment(fromDate).format('yyyy-MM-DD')
-              if(toDate) data.to_date=moment(toDate).format('yyyy-MM-DD')
-              if(type) data.type=type
+              if (fromDate) data.from_date = moment(fromDate).format('yyyy-MM-DD')
+              if (toDate) data.to_date = moment(toDate).format('yyyy-MM-DD')
+              if (type) data.type = type
               await dispatch(getTransaction1(data))
               await dispatch(showLoader(false))
               setModalVisible(false)
@@ -213,7 +219,7 @@ const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
           modal
           open={open}
           mode={'date'}
-          date={isFromDate?fromDate?fromDate:toDate?toDate:new Date():new Date()}
+          date={isFromDate ? fromDate ? fromDate : toDate ? toDate : new Date() : new Date()}
           onConfirm={date => {
             isFromDate ? setFromDate(date) : setToDate(date);
             setIsFromDate(false);
@@ -265,7 +271,7 @@ const FilterModal = ({onPressBack, visible, theme,setModalVisible}) => {
                       <View
                         style={[
                           styles.divider,
-                          {marginHorizontal: horizontalScale(14)},
+                          { marginHorizontal: horizontalScale(14) },
                         ]}
                       />
                     ) : (
