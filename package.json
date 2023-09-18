@@ -24,8 +24,14 @@
     "expo": "~49.0.8",
     "expo-app-loading": "^2.1.1",
     "expo-clipboard": "~4.3.1",
+    "expo-document-picker": "^11.7.0",
+    "expo-file-system": "^15.6.0",
     "expo-font": "^11.4.0",
+    "expo-intent-launcher": "^10.7.0",
     "expo-linear-gradient": "~12.3.0",
+    "expo-media-library": "^15.6.0",
+    "expo-permissions": "^14.4.0",
+    "expo-sharing": "^11.7.0",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "jwt-decode": "^3.1.2",
@@ -39,6 +45,7 @@
     "react-native-date-picker": "^4.2.6",
     "react-native-document-picker": "^9.0.1",
     "react-native-easy-toast": "^2.3.0",
+    "react-native-fetch-blob": "^0.10.8",
     "react-native-file-viewer": "^2.1.5",
     "react-native-flash-message": "^0.3.1",
     "react-native-gesture-handler": "~2.12.0",
@@ -64,7 +71,8 @@
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

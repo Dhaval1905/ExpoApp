@@ -1,25 +1,30 @@
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Linking, Text, View, ScrollView, Image, Platform, Modal, Dimensions, SafeAreaView } from 'react-native';
+import { Linking, Text, View, ScrollView, Image, Platform, Modal, Dimensions, SafeAreaView, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { CustomButton, CustomHeader } from '../../components';
-import { Strings } from '../../constants';
+import { Strings, navigationStrings } from '../../constants';
 import { Colors, horizontalScale, moderateScale, verticalScale } from '../../theme';
 import styling from './TransacationDetailStyle';
 import { useDispatch, useSelector } from 'react-redux';
 import { showLoader } from '../../redux/actions/user';
 import { getBankLetter, getProductCard } from '../../redux/actions/card';
 import { showMessage } from 'react-native-flash-message';
-// import FileViewer from "react-native-file-viewer";
+
 // import RNFetchBlob from 'rn-fetch-blob';
 import { getPdf } from '../../redux/actions/tansaction';
 import { Fonts, Icons } from '../../assets';
 import images from '../../assets/images';
 import { TouchableOpacity } from 'react-native';
 import moment from 'moment';
-import { WebView } from 'react-native-webview';
+import { WebView } from '../../components/Webview/Webview';
 // import Share from 'react-native-share';
-
+import * as FileSystem from 'expo-file-system';
+import * as MediaLibrary from 'expo-media-library';
+import * as Permissions from "expo-permissions"
+import * as Sharing from 'expo-sharing'
+import * as IntentLauncher from 'expo-intent-launcher';
+import axios from 'axios';
 
 const TransacationDetails = ({ navigation }) => {
   const route = useRoute();
@@ -31,36 +36,96 @@ const TransacationDetails = ({ navigation }) => {
   const styles = styling(theme);
   const userDetails = useSelector(state => state?.user?.login)
 
+  const downloadFile = async (url, fileName) => {
+    let remoteUrl = url;
+    let localPath = `${FileSystem.documentDirectory}/sample.pdf`;
+    FileSystem.downloadAsync(remoteUrl, localPath).then(async ({ uri }) => {
+      const contentURL = await FileSystem.getContentUriAsync(uri);
+      try {
+        if (Platform.OS == 'android') {
+          // open with android intent
+          await IntentLauncher.startActivityAsync(
+            'android.intent.action.VIEW',
+            {
+              data: contentURL,
+              flags: 1,
+              type: 'application/pdf',
+              // change this with any type of file you want
+              // excel sample type
+              // 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            }
+          );
+          // or
+          // Sharing.shareAsync(localPath);
+        } else if (Platform.OS == 'ios') {
+          Sharing.shareAsync(localPath);
+        }
+      } catch (error) {
+        console.log(":::::::::::", error)
+        Alert.alert('INFO', JSON.stringify(error));
+      }
+    });
+
+  }
+
+  const downloadFileWeb = async (url, fileName) => {
+    // const fileUrl = url;
+
+    // try {
+    //   const response = await fetch(fileUrl);
+    //   const blob = await response.blob();
+
+    //   // Create a blob URL to display the file
+    //   const blobUrl = URL.createObjectURL(blob);
+    //   console.log("Blob url is", blobUrl)
+    //   // setFileUrl(blobUrl);
+    // } catch (error) {
+    //   console.error('Error downloading file:', error);
+    // }
+
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const urlObject = URL.createObjectURL(blob);
+      console.log("URL object osiis", urlObject)
+      return urlObject;
+    } catch (error) {
+      console.error('Error downloading file:', error);
+      return null;
+    }
+
+  };
+
   // const downloadFile = (url, fileName) => {
   //   const { config, fs } = RNFetchBlob;
-  //   const DownloadDir = fs.dirs.DownloadDir;
-  //   const options = {
-  //     fileCache: true,
-  //     addAndroidDownloads: {
-  //       useDownloadManager: true,
-  //       notification: true,
-  //       path: `${DownloadDir}/${fileName}`,
-  //       description: 'Downloading file',
-  //     },
-  //   };
-  //   config(options)
-  //     .fetch('GET', url)
-  //     .then((res) => {
-  //       if(Platform.OS==='android'){
-  //         FileViewer.open(res.path())
-  //         .then(() => {
-  //           console.log('File opened successfully');
-  //         })
-  //         .catch((error) => {
-  //           console.error(`Error opening file: ${error}`);
-  //         });
-  //       }else{
-  //         console.log('The file saved to ', res?.respInfo?.redirects[0]);
-  //         setIsDisplay(true)
-  //         setUrl(url)
-  //       }
-  //       // You can now use the downloaded file by passing the file path to other functions or components
-  //     });
+  //   // const DownloadDir = fs.dirs.DownloadDir;
+  //   // const options = {
+  //   //   fileCache: true,
+  //   //   addAndroidDownloads: {
+  //   //     useDownloadManager: true,
+  //   //     notification: true,
+  //   //     path: `${DownloadDir}/${fileName}`,
+  //   //     description: 'Downloading file',
+  //   //   },
+  //   // };
+  //   // config(options)
+  //   //   .fetch('GET', url)
+  //   //   .then((res) => {
+  //   //     if (Platform.OS === 'android') {
+  //   //       // FileViewer.open(res.path())
+  //   //       // .then(() => {
+  //   //       //   console.log('File opened successfully');
+  //   //       // })
+  //   //       // .catch((error) => {
+  //   //       //   console.error(`Error opening file: ${error}`);
+  //   //       // });
+  //   //     } else {
+  //   //       console.log('The file saved to ', res?.respInfo?.redirects[0]);
+  //   //       setIsDisplay(true)
+  //   //       setUrl(url)
+  //   //     }
+  //   // You can now use the downloaded file by passing the file path to other functions or components
+  //   // });
   // };
 
   const getLetter = async () => {
@@ -77,7 +142,9 @@ const TransacationDetails = ({ navigation }) => {
         type: "danger",
       });
     } else {
-      downloadFile(res?.data?.data?.["pdf-url"], `tran_detail_${transaction?.uuid}.pdf`);
+      Platform.OS === "web" ?
+        downloadFileWeb(res?.data?.data?.["pdf-url"], `tran_detail_${transaction?.uuid}.pdf`) :
+        downloadFile(res?.data?.data?.["pdf-url"], `tran_detail_${transaction?.uuid}.pdf`);
     }
   }
 
