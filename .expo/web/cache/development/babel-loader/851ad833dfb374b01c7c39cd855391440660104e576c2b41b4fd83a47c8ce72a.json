@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default as Support } from \"./Support\";","map":{"version":3,"names":["default","Support"],"sources":["/Users/dhavalpatel/Documents/ExpoApp/src/modules/Support/index.js"],"sourcesContent":["export {default as Support} from './Support';\n"],"mappings":"AAAA,SAAQA,OAAO,IAAIC,OAAO"},"metadata":{},"sourceType":"module","externalDependencies":[]}

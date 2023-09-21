@@ -167,7 +167,7 @@ const BankTransferScreen = ({ navigation }) => {
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled">
             <TextInput
-              theme={{ roundness: 45, }}
+              theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
               mode={'outlined'}
               label={Strings.legalName?.toUpperCase()}
               style={styles.textInput}
@@ -185,7 +185,7 @@ const BankTransferScreen = ({ navigation }) => {
             )}
             <TextInput
               mode={'outlined'}
-              theme={{ roundness: 45, }}
+              theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
               label={Strings.nickname?.toUpperCase() + ' (optional)'}
               style={styles.textInput}
               activeOutlineColor={Colors[theme]?.black}
@@ -195,7 +195,7 @@ const BankTransferScreen = ({ navigation }) => {
             <TouchableOpacity activeOpacity={.8} onPress={() => {
               setIsVisibleType1(true)
               setAccountTypeError1('')
-            }} style={{ width: "100%", marginTop: moderateScale(20), height: moderateScale(55), flexDirection: "row", justifyContent: "space-between", alignItems: "center", borderColor: Colors[theme].grey700, borderWidth: 1, borderRadius: moderateScale(40), }}>
+            }} style={{ width: "100%", marginTop: Platform.OS === "web" ? 20 : moderateScale(20), height: Platform.OS === "web" ? 55 : moderateScale(55), flexDirection: "row", justifyContent: "space-between", alignItems: "center", borderColor: Colors[theme].grey700, borderWidth: 1, borderRadius: Platform.OS === "web" ? 40 : moderateScale(40), }}>
               {/* <ModalButton
                 theme={theme}
                 buttonValue={selectedType ? selectedType : 'CUSTOMER TYPE'}
@@ -209,11 +209,11 @@ const BankTransferScreen = ({ navigation }) => {
                   setAccountTypeError('')
                 }}
               /> */}
-              <View style={{ width: "90%" }}>
-                <Text style={{ fontSize: moderateScale(16), color: Colors[theme].grey700, paddingLeft: moderateScale(15) }}>{selectedType1 ? selectedType1 : 'ACCOUNT TYPE'}</Text>
+              <View style={{ width: "95%" }}>
+                <Text style={{ fontSize: Platform.OS === "web" ? 16 : moderateScale(16), color: Colors[theme].grey700, paddingLeft: Platform.OS === "web" ? 15 : moderateScale(15) }}>{selectedType1 ? selectedType1 : 'ACCOUNT TYPE'}</Text>
               </View>
-              <View style={{ width: "10%" }}>
-                <DownArrow name='chevron-thin-down' size={moderateScale(20)} color={Colors[theme].grey500} />
+              <View style={{ width: "5%" }}>
+                <DownArrow name='chevron-thin-down' size={Platform.OS === "web" ? 20 : moderateScale(20)} color={Colors[theme].grey500} />
               </View>
             </TouchableOpacity>
             {accountTypeError1?.length > 0 && (
@@ -223,7 +223,7 @@ const BankTransferScreen = ({ navigation }) => {
             )}
             <TextInput
               mode={'outlined'}
-              theme={{ roundness: 45, }}
+              theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
               label={Strings.bankName?.toUpperCase()}
               style={styles.textInput}
               activeOutlineColor={Colors[theme]?.black}
@@ -240,7 +240,7 @@ const BankTransferScreen = ({ navigation }) => {
             )}
             <TextInput
               mode={'outlined'}
-              theme={{ roundness: 45, }}
+              theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
               label={Strings.accountNumber?.toUpperCase()}
               style={styles.textInput}
               activeOutlineColor={Colors[theme]?.black}
@@ -258,7 +258,7 @@ const BankTransferScreen = ({ navigation }) => {
             )}
             <TextInput
               mode={'outlined'}
-              theme={{ roundness: 45, }}
+              theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
               label={Strings.routingNumber?.toUpperCase()}
               style={styles.textInput}
               activeOutlineColor={Colors[theme]?.black}
@@ -278,7 +278,7 @@ const BankTransferScreen = ({ navigation }) => {
             )}
             <TextInput
               mode={'outlined'}
-              theme={{ roundness: 45, }}
+              theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
               label={Strings.routingNumber1?.toUpperCase()}
               style={styles.textInput}
               activeOutlineColor={Colors[theme]?.black}
@@ -299,7 +299,7 @@ const BankTransferScreen = ({ navigation }) => {
             <TextInput
               mode={'outlined'}
               label={"US"}
-              theme={{ roundness: 45, }}
+              theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
               // placeholderTextColor={"Black"}
               style={styles.textInput}
               activeOutlineColor={Colors[theme]?.black}
@@ -311,7 +311,7 @@ const BankTransferScreen = ({ navigation }) => {
           theme={theme}
           buttonTitle={Strings.submit}
           buttonTitleStyle={styles.review}
-          buttonStyle={{ ...styles.reviewButtonStyle, marginBottom: isKeyboardVisible ? Platform.OS==='ios'? moderateScale(45):moderateScale(10) : moderateScale(10) }}
+          buttonStyle={{ ...styles.reviewButtonStyle, marginBottom: isKeyboardVisible ? Platform.OS === 'ios' ? moderateScale(45) : moderateScale(10) : moderateScale(10) }}
           onBtnPress={() => addAccountPress()}
         />
         <Modal visible={isVisibleType} transparent>
@@ -321,7 +321,7 @@ const BankTransferScreen = ({ navigation }) => {
                 <Text style={styles.modalTitle}>{Strings.type}</Text>
                 <Icon
                   name="close"
-                  size={moderateScale(24)}
+                  size={Platform.OS === "web" ? 24 : moderateScale(24)}
                   color={Colors[theme]?.black}
                   onPress={() => setIsVisibleType(false)}
                 />
@@ -360,7 +360,7 @@ const BankTransferScreen = ({ navigation }) => {
                 <Text style={styles.modalTitle}>{Strings.type}</Text>
                 <Icon
                   name="close"
-                  size={moderateScale(24)}
+                  size={Platform.OS === "web" ? 24 : moderateScale(24)}
                   color={Colors[theme]?.black}
                   onPress={() => setIsVisibleType1(false)}
                 />

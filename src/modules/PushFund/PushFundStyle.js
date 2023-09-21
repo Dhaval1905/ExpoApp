@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Fonts } from '../../assets';
 import {
   Colors,
@@ -16,15 +16,15 @@ const styling = theme =>
     card: {
       backgroundColor: Colors[theme].screenBackground,
       // paddingHorizontal: horizontalScale(18),
-      borderRadius: moderateScale(18),
-      marginTop: verticalScale(20),
-      marginHorizontal: horizontalScale(16),
-      flex:1
+      borderRadius: Platform.OS === "web" ? 18 : moderateScale(18),
+      marginTop: Platform.OS === "web" ? 20 : verticalScale(20),
+      marginHorizontal: Platform.OS === "web" ? 16 : horizontalScale(16),
+      flex: 1
     },
     divider: {
       backgroundColor: Colors[theme].grey300,
       width: '100%',
-      height: verticalScale(2),
+      height: Platform.OS === "web" ? 2 : verticalScale(2),
     },
     darkGreenText: {
       color: Colors[theme].green900,
@@ -34,13 +34,13 @@ const styling = theme =>
     },
     descriptionTitle: {
       color: Colors[theme].black,
-      marginVertical: verticalScale(10),
-      fontSize: moderateScale(16),
+      marginVertical: Platform.OS === "web" ? 10 : verticalScale(10),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.regular,
     },
     descriptionSubtitle: {
-      fontSize: moderateScale(16),
-      marginBottom: verticalScale(18),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
+      marginBottom: Platform.OS === "web" ? 18 : verticalScale(18),
       fontFamily: Fonts.regular,
     },
     routingNumberParent: {
@@ -49,7 +49,7 @@ const styling = theme =>
     subTitleParent: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginTop: verticalScale(4),
+      marginTop: Platform.OS === "web" ? 4 : verticalScale(4),
     },
     routingNumber: {
       fontFamily: Fonts.regular,
@@ -63,12 +63,12 @@ const styling = theme =>
     },
     detailText: {
       color: Colors[theme].black,
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
       fontFamily: Fonts.bold,
     },
     detailText1: {
       color: Colors[theme].black,
-      fontSize: moderateScale(13),
+      fontSize: Platform.OS === "web" ? 13 : moderateScale(13),
       fontFamily: Fonts.regular,
       marginTop: 5
     },
@@ -79,23 +79,23 @@ const styling = theme =>
     },
     choosePayMethod: {
       fontFamily: Fonts.regular,
-      fontSize: moderateScale(12),
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(12),
     },
     routingAccountNumberParent: {
       flexDirection: 'row',
-      marginVertical: verticalScale(20),
-      marginBottom: verticalScale(20),
+      marginVertical: Platform.OS === "web" ? 20 : verticalScale(20),
+      marginBottom: Platform.OS === "web" ? 20 : verticalScale(20),
       // marginHorizontal: horizontalScale(16),
       backgroundColor: Colors[theme].white,
       elevation: 2,
-      borderRadius: horizontalScale(24),
-      padding: horizontalScale(16),
+      borderRadius: Platform.OS === "web" ? 24 : horizontalScale(24),
+      padding: Platform.OS === "web" ? 16 : horizontalScale(16),
       justifyContent: 'space-evenly'
     },
     routingNumberParent: {
       // flex: 0.5,
       borderLeftWidth: 0.2,
-      paddingLeft: horizontalScale(15)
+      paddingLeft: Platform.OS === "web" ? 15 : horizontalScale(15)
     },
     accountNumberParent: {
       // flex: 0.8,
@@ -105,10 +105,10 @@ const styling = theme =>
     subTitleParent: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginTop: verticalScale(4),
+      marginTop: Platform.OS === "web" ? 4 : verticalScale(4),
     },
     subTitle: {
-      marginRight: horizontalScale(3),
+      marginRight: Platform.OS === "web" ? 3 : horizontalScale(3),
       fontFamily: Fonts.bold,
       color: Colors[theme]?.black,
       fontSize: 12
@@ -130,90 +130,90 @@ const styling = theme =>
     },
     modalContainer: {
       backgroundColor: Colors[theme].white,
-      borderTopRightRadius: horizontalScale(32),
-      borderTopLeftRadius: horizontalScale(32),
+      borderTopRightRadius: Platform.OS === "web" ? 32 : horizontalScale(32),
+      borderTopLeftRadius: Platform.OS === "web" ? 32 : horizontalScale(32),
     },
     modalHeader: {
-      marginVertical: verticalScale(20),
-      marginHorizontal: horizontalScale(20),
+      marginVertical: Platform.OS === "web" ? 20 : verticalScale(20),
+      marginHorizontal: Platform.OS === "web" ? 20 : horizontalScale(20),
       justifyContent: 'space-between',
       flexDirection: 'row'
     },
     modalTitle: {
       color: Colors[theme].black,
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.medium,
     },
     inputView: {
       width: "90%",
       alignSelf: "center",
-      marginTop: verticalScale(10),
+      marginTop: Platform.OS === "web" ? 10 : verticalScale(10),
     },
     txt: {
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       color: Colors[theme].grey700,
       fontFamily: Fonts.medium,
-      marginBottom: moderateScale(5)
+      marginBottom: Platform.OS === "web" ? 5 : moderateScale(5)
     },
     textInput: {
       backgroundColor: Colors[theme].white,
       borderWidth: 1,
-      height: moderateScale(50),
-      borderRadius: moderateScale(45),
-      paddingLeft: moderateScale(20),
-      fontSize: moderateScale(16),
-      color:'#000'
+      height: Platform.OS === "web" ? 50 : moderateScale(50),
+      borderRadius: Platform.OS === "web" ? 45 : moderateScale(45),
+      paddingLeft: Platform.OS === "web" ? 20 : moderateScale(20),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
+      color: '#000'
     },
     loginBtn: {
       width: "90%",
       alignSelf: "center",
-      height: verticalScale(50),
+      height: Platform.OS === "web" ? 50 : verticalScale(50),
       backgroundColor: Colors[theme].blue,
-      borderRadius: moderateScale(30),
+      borderRadius: Platform.OS === "web" ? 30 : moderateScale(30),
       marginTop: "10%",
-      marginBottom: moderateScale(20),
+      marginBottom: Platform.OS === "web" ? 20 : moderateScale(20),
     },
     loginBtn1: {
       width: "90%",
       alignSelf: "center",
-      height: verticalScale(50),
+      height: Platform.OS === "web" ? 50 : verticalScale(50),
       backgroundColor: Colors[theme].blue,
-      borderRadius: moderateScale(30),
-    position:'absolute',
-    bottom:horizontalScale(18),
-    zIndex:9999
+      borderRadius: Platform.OS === "web" ? 30 : moderateScale(30),
+      position: 'absolute',
+      bottom: Platform.OS === "web" ? 18 : horizontalScale(18),
+      zIndex: 9999
     },
     loginText: {
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
       fontFamily: Fonts.medium,
     },
     srContainer: {
       // height: moderateScale(50),
       backgroundColor: Colors[theme].white,
-      width: "96%", 
+      width: "96%",
       alignSelf: "center",
-      borderRadius: moderateScale(45),
+      borderRadius: Platform.OS === "web" ? 45 : moderateScale(45),
       flexDirection: "row",
       alignItems: "center",
-      padding:moderateScale(5),
+      padding: Platform.OS === "web" ? 5 : moderateScale(5),
       // paddingLeft: moderateScale(20),
       // paddingRight: moderateScale(5),
-      marginBottom: moderateScale(15)
+      marginBottom: Platform.OS === "web" ? 15 : moderateScale(15)
     },
     txtInput: {
       width: '80%',
-      paddingLeft: moderateScale(10),
-      fontSize: moderateScale(16),
+      paddingLeft: Platform.OS === "web" ? 10 : moderateScale(10),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.regular,
-      color:'#000'
+      color: '#000'
     },
     flTouch: {
       width: "96%",
-      height: verticalScale(70),
+      height: Platform.OS === "web" ? 70 : verticalScale(70),
       alignItems: "center",
       flexDirection: "row",
       alignSelf: "center",
-      marginTop:15
+      marginTop: 15
       // backgroundColor:'red'
     },
     flSub: {
@@ -222,38 +222,38 @@ const styling = theme =>
       flexDirection: "row"
     },
     nmContainer: {
-      height: verticalScale(50),
-      width: verticalScale(50),
-      borderRadius: verticalScale(50),
+      height: Platform.OS === "web" ? 50 : verticalScale(50),
+      width: Platform.OS === "web" ? 50 : verticalScale(50),
+      borderRadius: Platform.OS === "web" ? 50 : verticalScale(50),
       backgroundColor: '#DFF7FF',
       alignItems: "center",
       justifyContent: "center"
     },
     nmTxt: {
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       color: Colors[theme].black,
       fontFamily: Fonts.regular
     },
     icTouch: {
-      height: moderateScale(21),
-      width: moderateScale(23),
-      borderRadius: moderateScale(5),
+      height: Platform.OS === "web" ? 21 : moderateScale(21),
+      width: Platform.OS === "web" ? 23 : moderateScale(23),
+      borderRadius: Platform.OS === "web" ? 5 : moderateScale(5),
       backgroundColor: Colors[theme].grey300,
-      marginLeft: moderateScale(15),
+      marginLeft: Platform.OS === "web" ? 15 : moderateScale(15),
       justifyContent: "center",
       alignItems: "center"
     },
     locTxt: {
-      fontSize: moderateScale(12),
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(12),
       color: Colors[theme].grey600,
       fontFamily: Fonts.regular
     },
     crTxt: {
       width: "30%",
       position: "absolute",
-      right: moderateScale(-12),
-      bottom: moderateScale(15),
-      color:'#6B6B6B'
+      right: Platform.OS === "web" ? -12 : moderateScale(-12),
+      bottom: Platform.OS === "web" ? 15 : moderateScale(15),
+      color: '#6B6B6B'
     }
   });
 

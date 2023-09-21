@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Fonts } from '../../../assets';
 import {
   Colors,
@@ -15,7 +15,7 @@ const styling = theme =>
     },
     container: {
       flex: 1,
-      paddingHorizontal: horizontalScale(18),
+      paddingHorizontal: Platform.OS === "web" ? 18 : horizontalScale(18),
       // paddingBottom: verticalScale(80),
     },
     titleParent: {
@@ -25,11 +25,11 @@ const styling = theme =>
       alignItems: 'center',
       backgroundColor:
         theme === 'dark' ? Colors[theme]?.white : Colors[theme].grey300,
-      paddingVertical: verticalScale(15),
-      borderRadius: moderateScale(10),
+      paddingVertical: Platform.OS === "web" ? 15 : verticalScale(15),
+      borderRadius: Platform.OS === "web" ? 10 : moderateScale(10),
     },
     onlyVisible: {
-      marginBottom: verticalScale(25),
+      marginBottom: Platform.OS === "web" ? 25 : verticalScale(25),
       fontFamily: Fonts.regular,
     },
     scrollView: {
@@ -37,8 +37,8 @@ const styling = theme =>
     },
     title: {
       color: Colors[theme].black,
-      marginLeft: horizontalScale(10),
-      fontSize: moderateScale(16),
+      marginLeft: Platform.OS === "web" ? 10 : horizontalScale(10),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.regular,
     },
     card: {
@@ -52,40 +52,40 @@ const styling = theme =>
     },
     textInput: {
       backgroundColor: Colors[theme].screenBackground,
-      marginVertical: verticalScale(12),
+      marginVertical: Platform.OS === "web" ? 12 : verticalScale(12),
     },
     textInputMulti: {
-      height: verticalScale(150),
+      height: Platform.OS === "web" ? 150 : verticalScale(150),
     },
     checkingAccountParent: {
       flexDirection: 'row',
-      height: verticalScale(40),
+      height: Platform.OS === "web" ? 40 : verticalScale(40),
       justifyContent: 'space-between',
       alignItems: 'center',
     },
     checkingAccount: {
       color: Colors[theme].black,
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.regular,
     },
     onlyVisibleParent: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingRight: verticalScale(10),
+      paddingRight: Platform.OS === "web" ? 10 : verticalScale(10),
     },
     reviewButtonStyle: {
       backgroundColor: Colors[theme].blue,
       width: '90%',
-      height: moderateScale(50),
-      borderRadius: moderateScale(30),
-      alignSelf:'center',
+      height: Platform.OS === "web" ? 50 : moderateScale(50),
+      borderRadius: Platform.OS === "web" ? 30 : moderateScale(30),
+      alignSelf: 'center',
     },
     review: {
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
       fontFamily: Fonts.bold,
     },
     reviewButtonParent: {
-      height: verticalScale(70),
+      height: Platform.OS === "web" ? 70 : verticalScale(70),
       width: '100%',
       position: 'absolute',
       zIndex: 1,
@@ -93,7 +93,7 @@ const styling = theme =>
       bottom: 0,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: horizontalScale(30),
+      paddingHorizontal: Platform.OS === "web" ? 30 : horizontalScale(30),
     },
     modalParent: {
       flex: 1,
@@ -102,41 +102,41 @@ const styling = theme =>
     },
     modalContainer: {
       backgroundColor: Colors[theme].white,
-      borderTopRightRadius: horizontalScale(28),
-      borderTopLeftRadius: horizontalScale(28),
+      borderTopRightRadius: Platform.OS === "web" ? 28 : horizontalScale(28),
+      borderTopLeftRadius: Platform.OS === "web" ? 28 : horizontalScale(28),
     },
     modalHeader: {
-      marginVertical: verticalScale(20),
-      marginHorizontal: horizontalScale(20),
-      justifyContent:'space-between',
-      flexDirection:'row'
+      marginVertical: Platform.OS === "web" ? 20 : verticalScale(20),
+      marginHorizontal: Platform.OS === "web" ? 20 : horizontalScale(20),
+      justifyContent: 'space-between',
+      flexDirection: 'row'
     },
     modalTitle: {
       color: Colors[theme].black,
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.medium,
     },
     divider: {
       backgroundColor: Colors[theme].grey400,
-      height: verticalScale(2),
+      height: Platform.OS === "web" ? 2 : verticalScale(2),
     },
     modalList: {
-      marginHorizontal: horizontalScale(14),
-      flexDirection:'row',
-      justifyContent:'space-between'
+      marginHorizontal: Platform.OS === "web" ? 14 : horizontalScale(14),
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     },
     itemParent: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor:"#F2F2F2",
-      padding:8,
-      borderRadius:horizontalScale(30),
-      justifyContent:'center',
-      marginVertical:horizontalScale(20)
+      backgroundColor: "#F2F2F2",
+      padding: 8,
+      borderRadius: Platform.OS === "web" ? 30 : horizontalScale(30),
+      justifyContent: 'center',
+      marginVertical: Platform.OS === "web" ? 20 : horizontalScale(20)
     },
     modalItem: {
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
     },
     selectedModalItem: {
       color: Colors[theme].white,
@@ -149,8 +149,8 @@ const styling = theme =>
     },
     errorText: {
       color: Colors[theme].red,
-      fontSize: moderateScale(14),
-      marginTop: verticalScale(2),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
+      marginTop: Platform.OS === "web" ? 2 : verticalScale(2),
       fontFamily: Fonts.regular,
     },
   });

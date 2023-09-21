@@ -34,7 +34,7 @@ const MoveMoneyCard = ({
           <View style={[styles.leftParent, { backgroundColor: viewBackground }]}>
             <Image source={icon} style={styles.icon} resizeMode='contain' />
           </View>
-          <View style={{ marginLeft: horizontalScale(20) }}>
+          <View style={{ marginLeft: Platform.OS === "web" ? 20 : horizontalScale(20) }}>
             <View style={styles.detailParent}>
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.subTitle}>{subTitle}</Text>
@@ -58,7 +58,7 @@ const MoveMoneyCard = ({
       </View>
       <View style={styles.rightParent}>
         {rightIcon ? (
-          <Icon name={'chevron-right'} size={Platform.OS === "web" ? 25 : moderateScale(20)} color={'#000'} />
+          <Icon name={'chevron-right'} size={Platform.OS === "web" ? 20 : moderateScale(20)} color={'#000'} />
         ) : (
           <></>
         )}

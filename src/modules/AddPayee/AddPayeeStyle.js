@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Fonts } from '../../assets';
 import {
   Colors,
@@ -11,7 +11,7 @@ const styling = theme =>
   StyleSheet.create({
     screen: {
       flex: 1,
-      paddingHorizontal: horizontalScale(14),
+      paddingHorizontal: Platform.OS === "web" ? 14 : horizontalScale(14),
       backgroundColor: Colors[theme]?.screenBackground,
     },
     container: {
@@ -21,16 +21,16 @@ const styling = theme =>
     },
     choosePayMethod: {
       fontFamily: Fonts.medium,
-      fontSize: moderateScale(12),
-      color:'#808080'
+      fontSize: Platform.OS === "web" ? 12 : moderateScale(12),
+      color: '#808080'
     },
     card: {
       width: '100%',
       flexDirection: 'row',
       height: verticalScale(100),
       backgroundColor: Colors[theme].white,
-      marginVertical: verticalScale(10),
-      borderRadius: moderateScale(15),
+      marginVertical: Platform.OS === "web" ? 10 : verticalScale(10),
+      borderRadius: Platform.OS === "web" ? 15 : moderateScale(15),
     },
     leftParent: {
       flex: 0.2,
@@ -42,15 +42,15 @@ const styling = theme =>
       // justifyContent: 'center',
     },
     detailText: {
-      color:Colors[theme].white,
-      fontSize: moderateScale(18),
+      color: Colors[theme].white,
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
       fontFamily: Fonts.medium,
     },
     detailText1: {
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       fontFamily: Fonts.medium,
-      marginLeft:horizontalScale(10)
+      marginLeft: Platform.OS === "web" ? 10 : horizontalScale(10)
     },
     rightParent: {
       // flex: 0.1,
@@ -58,25 +58,27 @@ const styling = theme =>
       justifyContent: 'center',
     },
     loginBtn: {
-      height: verticalScale(70),
+      height: Platform.OS === "web" ? 50 : verticalScale(70),
+      width: Platform.OS === "web" ? "40%" : "100%",
       backgroundColor: Colors[theme].blue,
-      borderRadius: moderateScale(40),
-      marginTop: verticalScale(30),
-      flexDirection:'row',
-      alignItems:'center',
-      justifyContent:'center',
-      marginBottom:35,
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 1,
-        shadowRadius: 4,
+      borderRadius: Platform.OS === "web" ? 40 : moderateScale(40),
+      marginTop: Platform.OS === "web" ? 30 : verticalScale(30),
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: "center",
+      justifyContent: 'center',
+      marginBottom: 35,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 1,
+      shadowRadius: 4,
       elevation: 5
-  },
+    },
     loginText: {
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
     },
   })
 

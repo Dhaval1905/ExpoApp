@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
-import { Text, View, Linking, Image } from 'react-native';
+import { Text, View, Linking, Image, Platform } from 'react-native';
 import { CustomButton } from '../../components';
 import { navigationStrings, Strings } from '../../constants';
 import styling from './IntroStyle';
@@ -17,7 +17,7 @@ const IntroScreen = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.titleParent}>
-        <Image source={Icons.bank} style={{ height: 40, width: 40, tintColor: '#DFDFDF', marginBottom: 8 }}></Image>
+        <Image source={Icons.bank} style={{ height: Platform.OS === "web" ? 40 : 40, width: Platform.OS === "web" ? 40 : 40, tintColor: '#DFDFDF', marginBottom: 8 }}></Image>
         <Text style={[styles.subTitle, { color: '#000' }]}>{"Ready for"}</Text>
         <Text style={styles.title}>{Strings.introTitle}</Text>
       </View>

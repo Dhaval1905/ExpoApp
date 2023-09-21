@@ -88,9 +88,9 @@ const LoginScreen = (props) => {
 
   return (
     <View style={styles.screen}>
-    <KeyboardAvoidingView
-      behavior={isIos ? 'padding' : 'height'}
-      style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        behavior={isIos ? 'padding' : 'height'}
+        style={{ flex: 1 }}>
         <CustomHeader theme={theme} onPressBack={onPressHeaderback} />
         <View style={styles.container}>
           <View style={styles.applogoParent}>
@@ -99,7 +99,7 @@ const LoginScreen = (props) => {
           </View>
           <TextInput
             mode={'outlined'}
-            theme={{ roundness: 45, }} 
+            theme={{ roundness: Platform.OS === "web" ? 25 : 45, }}
             label={Strings.email}
             style={styles.textInput}
             activeOutlineColor={Colors[theme]?.black}
@@ -116,7 +116,7 @@ const LoginScreen = (props) => {
           )}
           <TextInput
             secureTextEntry={!passwordVisible}
-            theme={{ roundness: 45 }} 
+            theme={{ roundness: Platform.OS === "web" ? 25 : 45 }}
             mode={'outlined'}
             label={Strings.password}
             style={styles.textInput}
@@ -164,8 +164,8 @@ const LoginScreen = (props) => {
             </TouchableOpacity>
           </View>
         </View>
-    </KeyboardAvoidingView>
-      </View>
+      </KeyboardAvoidingView>
+    </View>
   );
 };
 

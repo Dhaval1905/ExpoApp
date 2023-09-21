@@ -41,7 +41,7 @@ const DashboardScreen = ({ navigation }) => {
     await dispatch(changeDashboard(true))
     navigation.navigate(navigationStrings.MOVEMONEY, { isMoveMoney: false })
   }
-
+  console.log("User details", JSON.stringify(userDetails))
   return (
     <View style={styles.screen}>
       <ScrollView style={{ flex: 1 }}>

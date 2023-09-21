@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default as ScanId } from \"./ScanIdScreen\";","map":{"version":3,"names":["default","ScanId"],"sources":["/Users/dhavalpatel/Documents/ExpoApp/src/modules/ScanId/index.js"],"sourcesContent":["export {default as ScanId} from './ScanIdScreen';\n"],"mappings":"AAAA,SAAQA,OAAO,IAAIC,MAAM"},"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Fonts} from '../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { Fonts } from '../../assets';
 import {
   Colors,
   horizontalScale,
@@ -12,12 +12,12 @@ const styling = theme =>
     card: {
       flexDirection: 'row',
       backgroundColor: Colors[theme].white,
-      borderRadius: moderateScale(20),
-      marginVertical: verticalScale(10),
-      elevation:4,
-      alignItems:'center',
-      justifyContent:'center',
-      padding:horizontalScale(10),
+      borderRadius: Platform.OS === "web" ? 20 : moderateScale(20),
+      marginVertical: Platform.OS === "web" ? 10 : verticalScale(10),
+      elevation: 4,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: Platform.OS === "web" ? 10 : horizontalScale(10),
     },
     container: {
       // justifyContent:'center'
@@ -28,50 +28,50 @@ const styling = theme =>
     },
     bottom: {
       flexDirection: 'row',
-      marginTop:10
+      marginTop: Platform.OS === "web" ? 10 : 10
     },
     leftParent: {
       alignItems: 'center',
-      justifyContent:'center',
-      height:horizontalScale(60),
-      width:horizontalScale(60),
-      borderRadius:horizontalScale(80),
-      alignSelf:'center'
+      justifyContent: 'center',
+      height: Platform.OS === "web" ? 60 : horizontalScale(60),
+      width: Platform.OS === "web" ? 60 : horizontalScale(60),
+      borderRadius: Platform.OS === "web" ? 80 : horizontalScale(80),
+      alignSelf: 'center'
     },
     icon: {
-      height: moderateScale(30),
-      width: moderateScale(30),
+      height: Platform.OS === "web" ? 30 : moderateScale(30),
+      width: Platform.OS === "web" ? 30 : moderateScale(30),
     },
     detailParent: {
     },
     title: {
       color: Colors[theme].black,
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.medium,
-      alignSelf:'center'
+      alignSelf: 'center'
     },
     subTitle: {
       color: Colors[theme].black,
       fontFamily: Fonts.regular,
-      alignSelf:'center'
+      alignSelf: 'center'
     },
     tagParent: {
       // height: verticalScale(24),
       backgroundColor: "#F6F6F6",
-      paddingHorizontal: horizontalScale(8),
+      paddingHorizontal: Platform.OS === "web" ? 8 : horizontalScale(8),
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: moderateScale(20),
-      marginHorizontal: horizontalScale(4),
+      borderRadius: Platform.OS === "web" ? 20 : moderateScale(20),
+      marginHorizontal: Platform.OS === "web" ? 4 : horizontalScale(4),
     },
     tagOne: {
       fontFamily: Fonts.regular,
-      fontSize:14,
-      color:'#6C6C6C'
+      fontSize: 14,
+      color: '#6C6C6C'
     },
     tagTwo: {
       fontFamily: Fonts.regular,
-      fontSize:14,
+      fontSize: 14,
     },
     rightParent: {
       position: 'absolute',
@@ -83,23 +83,23 @@ const styling = theme =>
       zIndex: 1,
     },
     divider: {
-  borderWidth:0.5,
-  borderStyle:'dashed',marginVertical:horizontalScale(20),
-  borderColor:'#000'
+      borderWidth: 0.5,
+      borderStyle: 'dashed', marginVertical: Platform.OS === "web" ? 20 : horizontalScale(20),
+      borderColor: '#000'
     },
     descriptionTitle: {
       color: Colors[theme].black,
-      marginVertical: verticalScale(10),
-      fontSize: moderateScale(16),
+      marginVertical: Platform.OS === "web" ? 10 : verticalScale(10),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       fontFamily: Fonts.medium,
-      textAlign:'center'
+      textAlign: 'center'
     },
     descriptionSubtitle: {
-      fontSize: moderateScale(16),
-      marginBottom: verticalScale(18),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
+      marginBottom: Platform.OS === "web" ? 18 : verticalScale(18),
       fontFamily: Fonts.regular,
-      textAlign:'center',
-      color:'#999999'
+      textAlign: 'center',
+      color: '#999999'
     },
   });
 

@@ -69,31 +69,7 @@ const TransacationDetails = ({ navigation }) => {
   }
 
   const downloadFileWeb = async (url, fileName) => {
-    // const fileUrl = url;
-
-    // try {
-    //   const response = await fetch(fileUrl);
-    //   const blob = await response.blob();
-
-    //   // Create a blob URL to display the file
-    //   const blobUrl = URL.createObjectURL(blob);
-    //   console.log("Blob url is", blobUrl)
-    //   // setFileUrl(blobUrl);
-    // } catch (error) {
-    //   console.error('Error downloading file:', error);
-    // }
-
-    try {
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const urlObject = URL.createObjectURL(blob);
-      console.log("URL object osiis", urlObject)
-      return urlObject;
-    } catch (error) {
-      console.error('Error downloading file:', error);
-      return null;
-    }
-
+    await Linking.openURL(url);
   };
 
   // const downloadFile = (url, fileName) => {

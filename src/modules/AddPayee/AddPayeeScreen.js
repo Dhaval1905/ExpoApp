@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View, FlatList } from 'react-native';
+import { Text, TouchableOpacity, View, FlatList, Platform } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Fontisto from 'react-native-vector-icons/Fontisto';
@@ -25,8 +25,8 @@ const AddPayeeScreen = ({ navigation }) => {
       await dispatch(showLoader(true))
       let data = {
         customer_id: userDetails?.data?.personDetail?.[0]?.id,
-        vendor_type :"MANUAL",
-        take_from :""
+        vendor_type: "MANUAL",
+        take_from: ""
       }
       let externalAccountList = await externalAccountGet(data)
       setExternalAccount(externalAccountList?.data?.data?.external_accounts)
@@ -53,9 +53,9 @@ const AddPayeeScreen = ({ navigation }) => {
               initials += names[names.length - 1].substring(0, 1).toUpperCase();
             }
             return (
-              <TouchableOpacity style={{ alignItems: 'center',flexDirection:'row',marginTop:horizontalScale(15) }} onPress={() => navigation.navigate(navigationStrings.SelectTransfer, { item })}>
-                <View style={{ height: 50, width: 50,borderRadius: 80 ,backgroundColor: '#DFF7FF', marginLeft: 8, justifyContent: 'center', alignItems: 'center' }}>
-                  <Text style={[styles.detailText,{color:'#6DD8FC'}]} >{initials}</Text>
+              <TouchableOpacity style={{ alignItems: 'center', flexDirection: 'row', marginTop: Platform.OS === "web" ? 15 : horizontalScale(15) }} onPress={() => navigation.navigate(navigationStrings.SelectTransfer, { item })}>
+                <View style={{ height: 50, width: 50, borderRadius: 80, backgroundColor: '#DFF7FF', marginLeft: 8, justifyContent: 'center', alignItems: 'center' }}>
+                  <Text style={[styles.detailText, { color: '#6DD8FC' }]} >{initials}</Text>
                 </View>
                 <Text style={styles.detailText1}>
                   {item?.account_owner_names}
@@ -66,21 +66,21 @@ const AddPayeeScreen = ({ navigation }) => {
         />
       </View>
       <TouchableOpacity
-          style={styles.loginBtn}
-          onPress={() => {
-            navigation.navigate(navigationStrings.BANKTRANSFER)
-          }}>
-          <View style={styles.leftParent}>
-            <FontAwesomeIcon
-              name={'user-plus'}
-              size={moderateScale(22)}
-              color={Colors[theme]?.white}
-            />
-          </View>
-          <View style={styles.detailParent}>
-            <Text style={styles.detailText}>{"Add Payee"}</Text>
-          </View>
-        </TouchableOpacity>
+        style={styles.loginBtn}
+        onPress={() => {
+          navigation.navigate(navigationStrings.BANKTRANSFER)
+        }}>
+        <View style={styles.leftParent}>
+          <FontAwesomeIcon
+            name={'user-plus'}
+            size={Platform.OS === "web" ? 22 : moderateScale(22)}
+            color={Colors[theme]?.white}
+          />
+        </View>
+        <View style={styles.detailParent}>
+          <Text style={styles.detailText}>{"Add Payee"}</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, Text, TouchableOpacity, View } from 'react-native';
 // import LinearGradient from 'react-native-linear-gradient';
 import { LinearGradient } from 'expo-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
@@ -97,7 +97,7 @@ const VirtualCardScreen = ({ navigation }) => {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, paddingBottom: 5 }}>
               <View style={{ alignItems: 'flex-start', justifyContent: 'space-between' }}>
                 <View>
-                  <Text style={[styles.cardNumber, { fontSize: horizontalScale(20) }]}>{`**** **** **** ${cardDetails?.last_four}`}</Text>
+                  <Text style={[styles.cardNumber, { fontSize: Platform.OS === 'web' ? 20 : horizontalScale(20) }]}>{`**** **** **** ${cardDetails?.last_four}`}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 10, width: '89%' }}>
                   <View>

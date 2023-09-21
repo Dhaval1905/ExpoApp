@@ -16,44 +16,47 @@ const styling = theme =>
     container: {
       flex: 1,
       backgroundColor: Colors[theme].white,
-      paddingHorizontal: horizontalScale(15),
+      paddingHorizontal: Platform.OS === "web" ? 15 : horizontalScale(15),
     },
     applogoParent: {
       // flex: 0.3,
-      marginVertical: horizontalScale(30)
+      marginVertical: Platform.OS === "web" ? 30 : horizontalScale(30)
       // justifyContent: 'center',
       // alignItems: 'center',
     },
     appLogo: {
-      height: verticalScale(70),
-      width: horizontalScale(280),
+      height: Platform.OS === "web" ? 70 : verticalScale(70),
+      width: Platform.OS === "web" ? 280 : horizontalScale(280),
     },
     textInput: {
       backgroundColor: Colors[theme].white,
-      marginTop: verticalScale(10),
+      width: "40%",
+      height: Platform.OS === "web" ? 40 : moderateScale(40),
+      marginTop: Platform.OS === "web" ? 10 : verticalScale(10),
     },
     loginBtn: {
-      width: '100%',
-      height: Platform.OS === "web" ? verticalScale(100) : verticalScale(50),
+      width: '30%',
+      height: Platform.OS === "web" ? 40 : verticalScale(50),
       backgroundColor: Colors[theme].blue,
-      borderRadius: moderateScale(30),
-      marginTop: verticalScale(30),
+      borderRadius: Platform.OS === "web" ? 30 : moderateScale(30),
+      marginTop: Platform.OS === "web" ? 30 : verticalScale(30),
+      // alignSelf: "center"
     },
     loginText: {
-      fontSize: moderateScale(18),
+      fontSize: Platform.OS === "web" ? 18 : moderateScale(18),
       fontFamily: Fonts.medium,
     },
     resetPassword: {
       color: Colors[theme].black,
-      fontSize: moderateScale(16),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
       alignSelf: 'center',
       marginTop: Platform.OS === 'web' ? verticalScale(30) : verticalScale(18),
       fontFamily: Fonts.medium,
     },
     errorText: {
       color: Colors[theme].red,
-      fontSize: moderateScale(14),
-      marginTop: verticalScale(2),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
+      marginTop: Platform.OS === "web" ? 2 : verticalScale(2),
       fontFamily: Fonts.regular,
     },
     applyNowParent: {
@@ -64,19 +67,19 @@ const styling = theme =>
     },
     newToRethink: {
       color: Colors[theme].black,
-      fontSize: moderateScale(14),
+      fontSize: Platform.OS === "web" ? 14 : moderateScale(14),
       fontFamily: Fonts.regular,
     },
     applyNow: {
       color: Colors[theme].black,
       fontFamily: Fonts.bold,
-      fontSize: moderateScale(16),
-      marginLeft: horizontalScale(4),
+      fontSize: Platform.OS === "web" ? 16 : moderateScale(16),
+      marginLeft: Platform.OS === "web" ? 4 : horizontalScale(4),
     },
     loginStyle: {
       fontFamily: Fonts.medium,
       fontWeight: '600',
-      fontSize: horizontalScale(25),
+      fontSize: Platform.OS === "web" ? 25 : horizontalScale(25),
       color: Colors[theme].black,
       marginTop: 5
     },
